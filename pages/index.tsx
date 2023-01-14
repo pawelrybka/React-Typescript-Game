@@ -1,29 +1,30 @@
-import React, { useState, FC, ChangeEvent } from 'react'
+import React, { FC, ChangeEvent, useState } from 'react'
 import Head from 'next/head'
-import { ITask } from './interfaces'
+import {ITask} from './interfaces'
+import TodoTask from '../components/task'
 
 const Home: FC = () => {
   
-  const [isTask, setTask] = useState<string>('')
-  const [isTime, setTime] = useState<number>(0)
-  const [isObject, setObject] = useState<ITask[]>([])
-  
-  const addTask = (): void => {
-    const newTask = { nameTask: isTask, deadline: isTime}
-    setObject([...isObject, newTask])
-    setTask('')
-    setTime(0)
-  }
+  const [task, setTask] = useState<string>("")
+  const [deadline, setDeadline] = useState<number>(0)
+  const [todoList, setTodoList] = useState<ITask[]>([])
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    if(event.target.name === "task"){
+    if(event.target.name === 'task'){
       setTask(event.target.value)
     }else{
-      setTime(Number(event.target.value))
+      setDeadline(Number(event.target.value))
     }
+  } 
+
+  const addTask = (): void => {
+    const newTask = { nameTask: task, deadline: deadline }
+    setTodoList([...todoList, newTask])
+    setTask("")
+    setDeadline(0)
   }
 
-  return(
+  return (
     <>
       <Head>
         <title>TodoApp React</title>
@@ -31,9 +32,26 @@ const Home: FC = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <div className='main'>
-        <input type="text" placeholder='Text...' onChange={handleChange}/>
-        <input type="text" placeholder='Time...' onChange={handleChange}/>
+        <input 
+          type="text" 
+          placeholder='Task...' 
+          name="task"
+          value={task}
+          onChange={handleChange} 
+        />
+        <input 
+          type="number" 
+          placeholder='Deadline(in days)...'
+          name="deadline" 
+          value={deadline}
+          onChange={handleChange} 
+        />
         <button onClick={addTask}>Send</button>
+      </div>
+      <div>
+        {todoList.map((task: ITask, key: number) => {
+          return <TodoTask key={key} task={task} />
+        })}
       </div>
     </>
   )

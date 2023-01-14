@@ -5,13 +5,13 @@
 }
 
 body{
-    background-color: black;
     display: flex;
     justify-content: center;
 }
 
 .main{
     display: flex;
+    
 }
 
 
