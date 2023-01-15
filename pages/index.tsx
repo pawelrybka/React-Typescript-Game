@@ -1,7 +1,8 @@
 import React, { FC, ChangeEvent, useState } from 'react'
 import Head from 'next/head'
 import {ITask} from './interfaces'
-import TodoTask from '../components/task'
+import TodoTask from '../components/task/task'
+import Footer from '../components/footer/footer'
 
 const Home: FC = () => {
   
@@ -53,6 +54,7 @@ const Home: FC = () => {
           return <TodoTask key={key} task={task} />
         })}
       </div>
+      <Footer />
     </>
   )
 }
