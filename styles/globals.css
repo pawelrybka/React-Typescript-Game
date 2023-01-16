@@ -11,12 +11,6 @@ body{
     color: white;
 }
 
-.main{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
 input{
     background-color: transparent;
     border: 3px solid blueviolet;

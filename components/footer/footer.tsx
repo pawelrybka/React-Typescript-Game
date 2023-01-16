@@ -4,7 +4,7 @@ import styles from './footer.module.css'
 const footer: FC = () => {
   return (
     <div className={styles.container}>
-        footer
+        <a href=""></a>
     </div>
   )
 }
