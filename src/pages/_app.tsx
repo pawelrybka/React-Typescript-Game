@@ -1,19 +1,21 @@
 import '../styles/index.css'
 import '../styles/variables.css'
-import Footer from '../components/footer/footer'
-import Header from '../components/header/Header'
-import AddPoint from '@/components/addPoint/AddPoint'
+import Footer from '../components/Footer/Footer'
+import Header from '../components/Header/Header'
+import ButtonSection from '../components/ButtonSection/ButtonSection'
 
-import type { AppProps } from 'next/app'
+import type { AppProps } from 'next/app';
 
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Header/>
       <Component {...pageProps} />
-      <AddPoint/>
+      <ButtonSection />
       <Footer/>
     </>
   )
 }
+
+export default App
 
