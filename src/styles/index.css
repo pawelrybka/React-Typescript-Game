@@ -7,14 +7,11 @@
 }
 
 body{
-    background-color: var(--background-black);
-    color: var( --dark-white);
     font-family: 'Roboto', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    color: var( --dark-white);
+    background-color: var(--background-black);
 }
+
 
 
 

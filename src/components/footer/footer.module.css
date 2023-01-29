@@ -1,23 +1,11 @@
 .footer{
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 8vh;
-    width: 100%;
+    background-color: var(--dark-purple);
+    padding: 1rem;
 }
 
-.footer__container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70%;
-    height: 8vh;
-    border-top: 1px solid var(--dark-white);
+.footer p{
+    width: fit-content;
+    margin: 0 auto;
 }
-
-
-
 
 
