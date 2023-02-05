@@ -3,7 +3,7 @@ import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import Roadmap from './components/Roadmap/Roadmap'
 import MainLayout from './components/MainLayout/MainLayout'
-
+import ButtonSection from './components/ButtonSection/ButtonSection'
 
 function App() {
 
@@ -11,6 +11,7 @@ function App() {
     <MainLayout>
       <Header/>
       <Roadmap/>
+      <ButtonSection/>
       <Footer/>
     </MainLayout>
   )
