@@ -1,9 +1,10 @@
 .roadmap{
-    background-color: purple;
     flex: 1;
-    display: flex;
-    justify-content: center;
+    text-align: center;
+    display: grid;
     align-items: center;
 }
+
+
 
 

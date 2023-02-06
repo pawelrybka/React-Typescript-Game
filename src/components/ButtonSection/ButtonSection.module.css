@@ -1,8 +1,8 @@
 .buttonSection{
     padding: 3rem;
-    background-color: aqua;
     display: flex;
     justify-content: center;
+    gap: 1rem;
 }
 
 
