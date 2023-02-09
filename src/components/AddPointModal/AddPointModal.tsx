@@ -4,7 +4,7 @@ type AddPointModalProps = {
   visible: boolean;
 }
 
-const AddPointModal = (visible: AddPointModalProps) => {
+const AddPointModal = ({visible}: AddPointModalProps) => {
   
   console.log(visible)
   return (
