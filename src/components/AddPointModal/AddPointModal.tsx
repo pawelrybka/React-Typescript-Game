@@ -5,9 +5,11 @@ type AddPointModalProps = {
 }
 
 const AddPointModal = (visible: AddPointModalProps) => {
+  
+  console.log(visible)
   return (
-    <div className={styles.addPointModal}>
-        AddPointModal
+    <div className={`${styles.addPointModal} ${visible ? styles.visible : ''}`}>
+      AddPointModal
     </div>
   )
 }

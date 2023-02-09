@@ -5,7 +5,9 @@
     transform: translate(-50%, -50%);
     padding: 10rem;
     background-color: black;
+    opacity: 0;
 }
 
-
-
+.visible{
+    opacity: 1
+}
