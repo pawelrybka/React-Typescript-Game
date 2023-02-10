@@ -5,11 +5,14 @@
     transform: translate(-50%, -50%);
     padding: 10rem;
     background-color: black;
-    opacity: 0;
+    visibility: hidden;
     border-radius: 50px;
+    z-index: 2;
+    opacity: 0;
     transition: .3s ease-in-out;
 }
 
 .visible{
-    opacity: 1
+    visibility: visible;
+    opacity: 1;
 }

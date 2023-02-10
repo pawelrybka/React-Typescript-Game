@@ -1,18 +1,21 @@
 import styles from './AddPointModal.module.css'
 
 type AddPointModalProps = {
-  visible: boolean;
+  active: boolean;
+  setActive: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const AddPointModal = ({visible}: AddPointModalProps) => {
+const AddPointModal = ({active, setActive}: AddPointModalProps) => {
   
-  console.log(visible)
+  const handleChange = () => setActive(!active)
+
   return (
-    <div className={`${styles.addPointModal} ${visible ? styles.visible : ''}`}>
-      AddPointModal
+    <div className={`${styles.addPointModal} ${active ? styles.visible : ''}`}>
+      <button onClick={handleChange}>X</button>
     </div>
   )
 }
 
 export default AddPointModal
+
 

@@ -1,6 +1,8 @@
 import styles from './AddPointButton.module.css'
 import AddPointModal from '../AddPointModal/AddPointModal'
 import { useState } from 'react'
+import BlurBackground from '../BlurBackground/BlurBackground'
+
 
 const AddPointButton = () => {
   
@@ -14,6 +16,10 @@ const AddPointButton = () => {
         <span>Add new point</span>
       </button>
       <AddPointModal 
+        active={active}
+        setActive={setActive}
+      />
+      <BlurBackground 
         visible={active}
       />
     </>
