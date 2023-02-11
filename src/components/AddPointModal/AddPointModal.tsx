@@ -11,7 +11,12 @@ const AddPointModal = ({active, setActive}: AddPointModalProps) => {
 
   return (
     <div className={`${styles.addPointModal} ${active ? styles.visible : ''}`}>
-      <button onClick={handleChange}>X</button>
+      <div className={styles.addPointModal__Container}>
+        <div className={styles.header}>
+          <span>JavaScript</span>
+          <button onClick={handleChange}>X</button>
+        </div>
+      </div>
     </div>
   )
 }
