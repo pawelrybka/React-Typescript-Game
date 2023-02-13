@@ -16,6 +16,10 @@ const AddPointModal = ({active, setActive}: AddPointModalProps) => {
           <span>JavaScript</span>
           <button onClick={handleChange}>X</button>
         </div>
+        <form className={styles.form}>
+          <span>Add point</span>
+          <input type="text" />
+        </form>
       </div>
     </div>
   )
