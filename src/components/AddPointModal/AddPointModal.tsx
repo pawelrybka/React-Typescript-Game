@@ -7,7 +7,7 @@ type AddPointModalProps = {
 
 const AddPointModal = ({active, setActive}: AddPointModalProps) => {
 
-  const tech = ["HTML", "CSS", "Javascript", "Typescript", "React"]
+  const tech = ["HTML", "CSS", "Javascript", "Typescript", "React", "Vue"]
 
   const handleChange = () => setActive(!active)
 
@@ -27,6 +27,9 @@ const AddPointModal = ({active, setActive}: AddPointModalProps) => {
           {
             tech.map(tech => <button>{tech}</button>)
           }
+        </div>
+        <div>
+          
         </div>
       </div>
     </div>

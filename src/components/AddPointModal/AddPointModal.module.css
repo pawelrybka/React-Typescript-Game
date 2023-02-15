@@ -29,8 +29,6 @@
     padding: .5rem;
 }
 
-
-
 .addpointmodal__content{
     padding: 1rem;
     background-color: rgb(12,22,45);
@@ -56,16 +54,23 @@
 
 .buttons{
     display: flex;
+    padding: 1rem 0rem;
     gap: 1rem;
-    justify-content: center;
-    align-items: center;
-    overflow-y: hidden;
-    padding: 0 0 1rem;
+    overflow-x: auto;
+
 }
 
 .buttons button{
-    padding: 1rem 1.5rem;
+    padding: 1rem;
+    border-radius: 10px;
+    border: none;
 }
+
+
+
+
+
+
 
 
 
