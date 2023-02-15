@@ -11,20 +11,23 @@ const AddPointModal = ({active, setActive}: AddPointModalProps) => {
 
   return (
     <div className={`${styles.addPointModal} ${active ? styles.visible : ''}`}>
-      <div className={styles.addPointModal__Container}>
+      <div className={styles.addPointModal__container}>
         <div className={styles.header}>
           <span>JavaScript</span>
           <button onClick={handleChange}>X</button>
         </div>
-        <form className={styles.form}>
-          <span>Add point</span>
-          <input type="text" />
-        </form>
+        <div className={styles.container}>
+          <form className={styles.form}>
+            <span>Add point</span>
+            <input type="text" />
+          </form>
+        </div>
       </div>
     </div>
   )
 }
 
 export default AddPointModal
+
 
 
