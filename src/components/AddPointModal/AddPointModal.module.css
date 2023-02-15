@@ -3,7 +3,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 40rem;
     width: min(90%, 600px, 90vw);
     visibility: hidden;
     border-radius: 20px;
@@ -57,13 +56,49 @@
     padding: 1rem 0rem;
     gap: 1rem;
     overflow-x: auto;
-
 }
 
 .buttons button{
     padding: 1rem;
     border-radius: 10px;
     border: none;
+    background-color: rgb(37,107,237);
+    cursor: pointer;
+}
+
+.timesection{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.timesection__header{
+    padding: 1rem 2rem;
+    background-color: rgb(23,34,54);
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+.timesection__buttons{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+.timesection__buttons div{
+    background-color: rgb(37,107,237);
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.confirm{
+    padding: 2rem;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(55,137,55);
 }
 
 
