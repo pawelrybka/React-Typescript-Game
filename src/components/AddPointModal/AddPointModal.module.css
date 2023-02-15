@@ -1,4 +1,4 @@
-.addPointModal{
+.addpointmodal{
     position: fixed;
     top: 50%;
     left: 50%;
@@ -10,47 +10,67 @@
     z-index: 2;
     opacity: 0;
     transition: .3s ease-in-out;
-    border: 1px solid blueviolet;
-}
-
-.addPointModal__container{
-    height: 100%;
-    border-radius: 20px;
+    border: 1px solid rgb(32,110,236);
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
-.header{
-    width: 100%;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+.addpointmodal__header{
+    border-radius: 20px 20px 0 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
     box-sizing: border-box;
-    background-color: grey;
+    background-color:rgb(23,34,54);
 }
 
-.container{
-    height: 100%;
-    width: 100%;
+.addpointmodal__header button{
+    padding: .5rem;
+}
+
+
+
+.addpointmodal__content{
+    padding: 1rem;
+    background-color: rgb(12,22,45);
+    flex: 1;
+    border-radius: 0 0 20px 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background-color: red;
-    padding: 1rem 0;
+    gap: 1rem;
 }
 
 .form{
-    background-color: grey;
-    border-radius: 15px;
-    width: 90%;
-    padding: .5rem;
     display: flex;
+    background-color: rgb(23,34,54);
+    padding: 1rem 2rem;
     justify-content: space-between;
+    border-radius: 10px;
+    align-items: center;
 }
+
+.form input{
+    padding: .5rem;
+}
+
+.buttons{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    overflow-y: hidden;
+    padding: 0 0 1rem;
+}
+
+.buttons button{
+    padding: 1rem 1.5rem;
+}
+
+
+
+
+
 
 
 
@@ -62,6 +82,7 @@
     visibility: visible;
     opacity: 1;
 }
+
 
 
 
