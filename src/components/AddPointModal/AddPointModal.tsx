@@ -1,4 +1,5 @@
 import styles from './AddPointModal.module.css'
+import { AiOutlineClose } from 'react-icons/ai';
 
 type AddPointModalProps = {
   active: boolean;
@@ -15,7 +16,7 @@ const AddPointModal = ({active, setActive}: AddPointModalProps) => {
     <div className={`${styles.addpointmodal} ${active ? styles.visible : ''}`}>
       <div className={styles.addpointmodal__header}>
         <span>JavaScript</span>
-        <button onClick={handleChange}>X</button>
+        <button onClick={handleChange}><AiOutlineClose size={20}/></button>
       </div>
       <div className={styles.addpointmodal__content}>
         <form className={styles.form}>
@@ -34,21 +35,21 @@ const AddPointModal = ({active, setActive}: AddPointModalProps) => {
             <span>No time specified</span>
           </div>
           <div className={styles.timesection__buttons}>
-            <div>-1 Day</div>
+            <button>-1 Day</button>
             <div>Days</div>
-            <div>+1 Day</div>
-            <div>-1 Week</div>
+            <button>+1 Day</button>
+            <button>-1 Week</button>
             <div>Weeks</div>
-            <div>+1 Week</div>
-            <div>-1 Month</div>
+            <button>+1 Week</button>
+            <button>-1 Month</button>
             <div>Months</div>
-            <div>+1 Month</div>
-            <div>-1 Year</div>
+            <button>+1 Month</button>
+            <button>-1 Year</button>
             <div>Years</div>
-            <div>+1 Year</div>
+            <button>+1 Year</button>
           </div>
         </div>
-        <button className={styles.confirm}>Confirm roadmap point</button>
+        <button className={styles.confirm} onClick={handleChange}>Confirm roadmap point</button>
       </div>
     </div>
   )

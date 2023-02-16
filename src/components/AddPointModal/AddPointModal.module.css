@@ -26,6 +26,13 @@
 
 .addpointmodal__header button{
     padding: .5rem;
+    background-color: rgb(32,110,236);
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    cursor: pointer;
 }
 
 .addpointmodal__content{
@@ -41,19 +48,21 @@
 .form{
     display: flex;
     background-color: rgb(23,34,54);
-    padding: 1rem 2rem;
+    padding: 1rem;
     justify-content: space-between;
     border-radius: 10px;
     align-items: center;
 }
 
 .form input{
-    padding: .5rem;
+    padding: .6rem;
+    border: 1px solid rgb(37,107,237);
+    border-radius: 10px;
 }
 
 .buttons{
     display: flex;
-    padding: 1rem 0rem;
+    padding: 0rem 0rem 1rem 0;
     gap: 1rem;
     overflow-x: auto;
 }
@@ -86,8 +95,14 @@
     gap: 1rem;
 }
 
-.timesection__buttons div{
+.timesection__buttons button{
     background-color: rgb(37,107,237);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.timesection__buttons div{
     display: flex;
     justify-content: center;
     padding: 1rem;
@@ -99,24 +114,8 @@
     border-radius: 10px;
     border: none;
     background-color: rgb(55,137,55);
+    cursor: pointer;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .visible{
     visibility: visible;
