@@ -1,7 +1,12 @@
 .addPointButton{
-    width: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 1rem;
+    gap: 1rem;
     border: none;
     border-radius: 10px;
     cursor: pointer;
+    background-color: var(--light-blue);
 }
+

@@ -1,5 +1,6 @@
 import styles from './AddPointModal.module.css'
-import { AiOutlineClose } from 'react-icons/ai';
+import { AiOutlineClose } from 'react-icons/ai'
+import { useState } from 'react'
 
 type AddPointModalProps = {
   active: boolean;
@@ -10,8 +11,12 @@ const AddPointModal = ({active, setActive}: AddPointModalProps) => {
 
   const tech = ["HTML", "CSS", "Javascript", "Typescript", "React", "Vue", "Tailwind", "SASS"]
 
+  const[value, setValue] = useState("")
+
   const handleChange = () => setActive(!active)
 
+  const handleValue = (e: any) => setValue(e.target.value)
+  
   return (
     <div className={`${styles.addpointmodal} ${active ? styles.visible : ''}`}>
       <div className={styles.addpointmodal__header}>
@@ -21,12 +26,12 @@ const AddPointModal = ({active, setActive}: AddPointModalProps) => {
       <div className={styles.addpointmodal__content}>
         <form className={styles.form}>
           <label>Roadmap point title</label>
-          <input type="text" />
+          <input type="text" value={value}/>
         </form>
         <p>Suggestions:</p>
         <div className={styles.buttons}>
           {
-            tech.map(tech => <button>{tech}</button>)
+            tech.map(tech => <input type='button' value={tech} onClick={handleValue}/>)
           }
         </div>
         <div className={styles.timesection}>

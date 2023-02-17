@@ -4,12 +4,16 @@
   font-weight: 400;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: rgb(12,22,45);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  --light-blue: rgb(37,107,237);
+  --dark-blue: rgb(23,34,54);
+  --background-blue: rgb(12,22,45);
+  --confirm-green: rgb(55,137,55);
 }
 
 *{
@@ -17,8 +21,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-
 
 body {
   min-height: 100vh;

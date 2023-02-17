@@ -2,7 +2,7 @@ import styles from './AddPointButton.module.css'
 import AddPointModal from '../AddPointModal/AddPointModal'
 import { useState } from 'react'
 import BlurBackground from '../BlurBackground/BlurBackground'
-
+import { AiOutlinePlusCircle } from 'react-icons/ai';
 
 const AddPointButton = () => {
   
@@ -13,6 +13,7 @@ const AddPointButton = () => {
   return (
     <>
       <button className={styles.addPointButton} onClick={onClick}>
+        <AiOutlinePlusCircle size={40}/>
         <span>Add new point</span>
       </button>
       <AddPointModal 

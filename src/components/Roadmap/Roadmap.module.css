@@ -1,9 +1,17 @@
 .roadmap{
     flex: 1;
-    text-align: center;
-    display: grid;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
+
+.roadmap p {
+    background-color: red;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: var(--dark-blue);
+}
+
 
 
 

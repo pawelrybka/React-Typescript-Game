@@ -6,7 +6,7 @@ const ButtonSection = () => {
   return (
     <div className={styles.buttonSection}>
         <AddPointButton/>
-        <ShareButton/>
+        {/* <ShareButton/> */}
     </div>
   )
 }
