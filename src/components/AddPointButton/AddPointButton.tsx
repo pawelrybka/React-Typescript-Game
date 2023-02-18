@@ -8,11 +8,11 @@ const AddPointButton = () => {
   
   const[active, setActive] = useState(false)
   
-  const onClick = () => setActive(!active)
+  const handleClick = () => setActive(!active)
 
   return (
     <>
-      <button className={styles.addPointButton} onClick={onClick}>
+      <button className={styles.addPointButton} onClick={handleClick}>
         <AiOutlinePlusCircle size={40}/>
         <span>Add new point</span>
       </button>
@@ -21,10 +21,10 @@ const AddPointButton = () => {
         setActive={setActive}
       />
       <BlurBackground 
-        visible={active}
+        active={active}
+        setActive={setActive}
       />
     </>
-    
   )
 }
 

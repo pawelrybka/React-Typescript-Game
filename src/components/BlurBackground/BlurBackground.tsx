@@ -1,12 +1,15 @@
 import styles from './BlurBackground.module.css'
 
 type props = {
-  visible: boolean
+  active: boolean
+  setActive: React.Dispatch<React.SetStateAction<boolean>>
 }
 
+const BlurBackground = ({active, setActive}: props) => {
+  
+  const handleChange = () => setActive(!active)
 
-const BlurBackground = ({visible}: props) => {
-  return <div className={`${styles.blurBackground} ${visible ? styles.active : ''}`} ></div>
+  return <div onClick={handleChange} className={`${styles.blurBackground} ${active ? styles.visible : ''}`}></div>
 }
 
 export default BlurBackground

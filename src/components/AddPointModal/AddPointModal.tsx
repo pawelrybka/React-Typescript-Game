@@ -3,7 +3,7 @@ import { AiOutlineClose } from 'react-icons/ai'
 import { useState } from 'react'
 
 type AddPointModalProps = {
-  active: boolean;
+  active: boolean
   setActive: React.Dispatch<React.SetStateAction<boolean>>
 }
 
@@ -26,7 +26,7 @@ const AddPointModal = ({active, setActive}: AddPointModalProps) => {
       <div className={styles.addpointmodal__content}>
         <form className={styles.form}>
           <label>Roadmap point title</label>
-          <input type="text" value={value}/>
+          <input type="text" value={value} onChange={handleValue}/>
         </form>
         <p>Suggestions:</p>
         <div className={styles.buttons}>
