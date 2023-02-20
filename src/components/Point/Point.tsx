@@ -1,8 +1,12 @@
 import styles from './Point.module.css'
 
-const Point = () => {
+type props ={
+  elem: string
+}
+
+const Point = ({elem}: props) => {
   return (
-    <div>Point</div>
+    <div className={styles.point}>{elem}</div>
   )
 }
 

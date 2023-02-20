@@ -3,14 +3,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
 }
 
-.roadmap p {
-    background-color: red;
+/* .roadmap p {
     padding: 1rem;
     border-radius: 10px;
     background-color: var(--dark-blue);
-}
+} */
 
 
 
