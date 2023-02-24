@@ -6,11 +6,15 @@
     gap: 1rem;
 }
 
-/* .roadmap p {
+.roadmap p {
     padding: 1rem;
     border-radius: 10px;
     background-color: var(--dark-blue);
-} */
+}
+
+.point{
+    padding: 1rem;
+}
 
 
 

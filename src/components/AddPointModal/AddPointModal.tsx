@@ -1,37 +1,50 @@
+import React from 'react'
 import styles from './AddPointModal.module.css'
 import { AiOutlineClose } from 'react-icons/ai'
-import { useState } from 'react'
+import TodosContext from '../Context/Context'
+import { useState, useContext, ChangeEvent } from 'react'
 
 type AddPointModalProps = {
-  active: boolean
-  setActive: React.Dispatch<React.SetStateAction<boolean>>
+  visible: boolean
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const AddPointModal = ({active, setActive}: AddPointModalProps) => {
+const AddPointModal = ({ visible, setVisible }: AddPointModalProps) => {
+
+  const handleClose = () => setVisible(!visible)
+
+  const [inputValue, setInputValue] = useState("");
+ 
+  const { addTodo } = useContext(TodosContext);
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleAddTodo = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    if(inputValue === '') return;
+    addTodo(inputValue);
+    setInputValue("");
+    setVisible(!visible)
+  };
 
   const tech = ["HTML", "CSS", "Javascript", "Typescript", "React", "Vue", "Tailwind", "SASS"]
 
-  const[value, setValue] = useState("")
-
-  const handleChange = () => setActive(!active)
-
-  const handleValue = (e: any) => setValue(e.target.value)
-  
   return (
-    <div className={`${styles.addpointmodal} ${active ? styles.visible : ''}`}>
+    <div className={`${styles.addpointmodal} ${visible ? styles.visible : ''}`}>
       <div className={styles.addpointmodal__header}>
         <span>JavaScript</span>
-        <button onClick={handleChange}><AiOutlineClose size={20}/></button>
+        <button onClick={handleClose}><AiOutlineClose size={20}/></button>
       </div>
       <div className={styles.addpointmodal__content}>
         <form className={styles.form}>
           <label>Roadmap point title</label>
-          <input type="text" value={value} onChange={handleValue}/>
+          <input type="text" value={inputValue} onChange={handleInputChange}/>
         </form>
         <p>Suggestions:</p>
         <div className={styles.buttons}>
           {
-            tech.map(tech => <input type='button' value={tech} onClick={handleValue}/>)
+            tech.map(tech => <input type='button' value={tech} onClick={() => setInputValue(tech)}/>)
           }
         </div>
         <div className={styles.timesection}>
@@ -54,7 +67,7 @@ const AddPointModal = ({active, setActive}: AddPointModalProps) => {
             <button>+1 Year</button>
           </div>
         </div>
-        <button className={styles.confirm} onClick={handleChange}>Confirm roadmap point</button>
+        <button className={styles.confirm} onClick={handleAddTodo}>Confirm roadmap point</button>
       </div>
     </div>
   )

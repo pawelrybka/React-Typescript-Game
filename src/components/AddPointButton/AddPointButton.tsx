@@ -1,14 +1,15 @@
-import styles from './AddPointButton.module.css'
+import React from 'react'
 import AddPointModal from '../AddPointModal/AddPointModal'
+import Backdrop from '../Backdrop/Backdrop'
 import { useState } from 'react'
-import BlurBackground from '../BlurBackground/BlurBackground'
 import { AiOutlinePlusCircle } from 'react-icons/ai';
+import styles from './AddPointButton.module.css'
 
 const AddPointButton = () => {
   
-  const[active, setActive] = useState(false)
+  const[visible, setActive] = useState(false)
   
-  const handleClick = () => setActive(!active)
+  const handleClick = () => setActive(!visible)
 
   return (
     <>
@@ -17,12 +18,12 @@ const AddPointButton = () => {
         <span>Add new point</span>
       </button>
       <AddPointModal 
-        active={active}
-        setActive={setActive}
+        visible={visible}
+        setVisible={setActive}
       />
-      <BlurBackground 
-        active={active}
-        setActive={setActive}
+      <Backdrop
+        visible={visible}
+        setVisible={setActive}
       />
     </>
   )
