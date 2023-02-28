@@ -27,7 +27,7 @@ const Main = () => {
         </button>
       ))}
       <AnimatePresence>
-        {visible && 
+        {visible &&
           <>
             <PointConfiguration 
               visible={visible}
@@ -38,7 +38,7 @@ const Main = () => {
               visible={visible}
               setVisible={setVisible}
             />
-          </>
+          </>  
         }
       </AnimatePresence>  
     </div>  

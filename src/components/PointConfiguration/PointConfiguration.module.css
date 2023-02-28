@@ -2,11 +2,84 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 30rem;
-    height: 30rem;
     transform: translate(-50%, -50%);
-    background-color: black;
+    width: min(90%, 800px, 90vw);
+    height: 30rem;
+    border-radius: 20px;
     z-index: 2;
+    border: 1px solid var(--light-blue);
+    display: flex;
+    flex-direction: column;
 }
 
+.pointconfiguration__header{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color:var(--dark-blue);
+    border-radius: 20px 20px 0 0;
+}
 
+.pointconfiguration__header button{
+    padding: .5rem;
+    background-color: var(--light-blue);
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    cursor: pointer;
+}
+
+.pointconfiguration__content{
+    background-color: var(--background-blue);
+    flex: 1;
+    margin: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.midpoints{
+    width: 50%;
+    height: 100%;
+    padding: 1rem;
+}
+
+.midpoints p{
+    text-align: center;
+    padding: .5rem;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.buttons button{
+    padding: 1rem;
+}
+
+.add{
+    background-color: var(--confirm-green);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.delete{
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.close{
+    background-color: var(--light-blue);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
