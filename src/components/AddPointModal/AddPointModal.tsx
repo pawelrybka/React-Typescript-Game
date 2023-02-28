@@ -3,6 +3,7 @@ import styles from './AddPointModal.module.css'
 import { AiOutlineClose } from 'react-icons/ai'
 import TodosContext from '../Context/Context'
 import { useState, useContext, ChangeEvent } from 'react'
+import { motion } from "framer-motion"
 
 type AddPointModalProps = {
   visible: boolean
@@ -11,17 +12,15 @@ type AddPointModalProps = {
 
 const AddPointModal = ({ visible, setVisible }: AddPointModalProps) => {
 
-  const handleClose = () => setVisible(!visible)
+  const { addTodo } = useContext(TodosContext);
 
   const [inputValue, setInputValue] = useState("");
  
-  const { addTodo } = useContext(TodosContext);
-
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
 
-  const handleAddTodo = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleAddTodo = () => {
     if(inputValue === '') return;
     addTodo(inputValue);
     setInputValue("");
@@ -31,10 +30,16 @@ const AddPointModal = ({ visible, setVisible }: AddPointModalProps) => {
   const tech = ["HTML", "CSS", "Javascript", "Typescript", "React", "Vue", "Tailwind", "SASS"]
 
   return (
-    <div className={`${styles.addpointmodal} ${visible ? styles.visible : ''}`}>
+    <motion.div 
+      className={styles.addpointmodal}
+      initial={{  opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: .3 }}
+    >
       <div className={styles.addpointmodal__header}>
         <span>JavaScript</span>
-        <button onClick={handleClose}><AiOutlineClose size={20}/></button>
+        <button onClick={() => setVisible(!visible)}><AiOutlineClose size={20}/></button>
       </div>
       <div className={styles.addpointmodal__content}>
         <form className={styles.form}>
@@ -69,7 +74,7 @@ const AddPointModal = ({ visible, setVisible }: AddPointModalProps) => {
         </div>
         <button className={styles.confirm} onClick={handleAddTodo}>Confirm roadmap point</button>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

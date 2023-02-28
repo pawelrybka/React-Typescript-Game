@@ -4,27 +4,32 @@ import Backdrop from '../Backdrop/Backdrop'
 import { useState } from 'react'
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import styles from './AddPointButton.module.css'
+import { AnimatePresence } from 'framer-motion'
 
 const AddPointButton = () => {
   
-  const[visible, setActive] = useState(false)
+  const[visible, setVisible] = useState(false)
   
-  const handleClick = () => setActive(!visible)
-
   return (
     <>
-      <button className={styles.addPointButton} onClick={handleClick}>
+      <button className={styles.addPointButton} onClick={() => setVisible(!visible)}>
         <AiOutlinePlusCircle size={40}/>
         <span>Add new point</span>
       </button>
-      <AddPointModal 
-        visible={visible}
-        setVisible={setActive}
-      />
-      <Backdrop
-        visible={visible}
-        setVisible={setActive}
-      />
+      <AnimatePresence>
+        {visible && 
+          <>
+            <AddPointModal 
+              visible={visible}
+              setVisible={setVisible}
+            />
+            <Backdrop
+              visible={visible}
+              setVisible={setVisible}
+            />
+          </>
+        }
+      </AnimatePresence>  
     </>
   )
 }

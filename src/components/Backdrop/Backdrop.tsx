@@ -1,15 +1,25 @@
 import styles from './Backdrop.module.css'
+import React from 'react'
+import { motion } from 'framer-motion'
 
-type props = {
+type props = { 
   visible: boolean
   setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const BlurBackground = ({visible, setVisible}: props) => {
-  
-  const handleChange = () => setVisible(!visible)
+const Backdrop = ({visible, setVisible}: props) => {
 
-  return <div onClick={handleChange} className={`${styles.blurBackground} ${visible ? styles.visible : ''}`}></div>
+  return (
+    <motion.div 
+      className={styles.backdrop}  
+      initial={{  opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: .3 }}
+      onClick={() => setVisible(!visible)}
+    ></motion.div>
+  )
 }
 
-export default BlurBackground
+export default Backdrop
+
