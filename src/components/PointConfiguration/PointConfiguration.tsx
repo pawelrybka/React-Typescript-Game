@@ -30,10 +30,27 @@ const PointConfiguration = ({ visible, setVisible, todo}: props) => {
       <div className={styles.midpoints}>
         <p>No midpoints for this roadmap point.</p>
       </div>
-      <div className={styles.buttons}>
-        <button className={styles.add}>Add midpoint</button>
-        <button className={styles.delete}>Delete roadmap point</button>
-        <button className={styles.close} onClick={() => setVisible(!visible)}>Close</button>
+      
+      <div className={styles.configuration}>
+
+        <div className={styles.configuration__edit}>
+          <div className={styles.container}>
+            <p>Title</p>
+            <button>Edit name and time</button>
+          </div>
+        </div>
+
+        <div className={styles.configuration__edit}>
+          <div className={styles.container}>
+            <p>Not Finished</p>
+            <button>Marked as finished</button>
+          </div>
+        </div>
+
+        <button className={styles.configuration__add}>Add midpoint</button>
+        <button className={styles.configuration__delete}>Delete roadmap point</button>
+        <button className={styles.configuration__close} onClick={() => setVisible(!visible)}>Close</button>
+      
       </div>
     </div>
 
