@@ -10,6 +10,8 @@ const Main = () => {
   
   const { todos } = useContext(Context);
   
+  const a = todos.find(todo => todo.id === selectedItemId)
+
   const [visible, setVisible] = useState(false)
 
   const [selectedItemId, setSelectedItemId] = useState<number | null>(null);
@@ -32,7 +34,7 @@ const Main = () => {
             <PointConfiguration 
               visible={visible}
               setVisible={setVisible}
-              todo={todos.find(todo => todo.id === selectedItemId)}
+              todo={a}
             />
             <Backdrop
               visible={visible}
