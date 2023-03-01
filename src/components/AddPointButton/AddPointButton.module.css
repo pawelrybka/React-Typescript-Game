@@ -8,5 +8,6 @@
     border-radius: 10px;
     cursor: pointer;
     background-color: var(--light-blue);
+    color: var(--text);
 }
 
