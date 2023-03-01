@@ -19,6 +19,18 @@ body {
   color: var(--text)
 }
 
+::-webkit-scrollbar {
+	width: 3px;
+	background-color: var(--dark-blue);
+	border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--light-blue);
+	border: 0;
+	border-radius: 5px;
+}
+
 
 
 

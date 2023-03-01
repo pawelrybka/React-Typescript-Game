@@ -3,8 +3,9 @@ import styles from './Roadmap.module.css'
 import Context from '../Context/Context'
 import { useContext, useState } from 'react'
 import PointConfiguration from '../PointConfiguration/PointConfiguration'
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Backdrop from '../Backdrop/Backdrop'
+import { AiOutlineBorder } from 'react-icons/ai'
 
 const Main = () => {
   
@@ -24,9 +25,18 @@ const Main = () => {
   return (
     <div className={styles.roadmap}>
       {todos.map((todo) => (
-        <button key={todo.id} className={styles.point} onClick={() => handleClick(todo.id)}>
-          {todo.text}
-        </button>
+        <AnimatePresence>
+          <motion.button 
+            whileHover={{ scale: 1.1  }}
+            key={todo.id} 
+            className={styles.point} 
+            onClick={() => handleClick(todo.id)}
+          >
+            {todo.text}
+            <span>To complete:</span>
+            <span>Not finished</span>
+          </motion.button>
+        </AnimatePresence> 
       ))}
       <AnimatePresence>
         {visible &&
