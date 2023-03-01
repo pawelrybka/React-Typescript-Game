@@ -4,6 +4,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: min(90%, 800px, 90vw);
+    max-height: 80vh;
     border-radius: 20px;
     z-index: 2;
     border: 1px solid var(--light-blue);
@@ -29,27 +30,21 @@
 }
 
 .pointconfiguration__content{
+    overflow-y: auto;
     flex: 1;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     padding: 1rem;
     gap: 1rem;
 }
 
-@media (max-width: 600px) {
-    .pointconfiguration__content{
-        flex-direction: column;
-    }
-}
-
 .midpoints p{
     text-align: center;
-    padding: .5rem;
 }
 
 .configuration{
     display: flex;
     flex-direction: column;
-   
     justify-content: space-between;
     gap: 1rem;
 }
