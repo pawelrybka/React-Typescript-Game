@@ -2,12 +2,10 @@ import React from 'react';
 import styles from './PointConfiguration.module.css'
 import { motion } from "framer-motion";
 import { AiOutlineClose } from 'react-icons/ai'
+import { Todo } from '../../assets/types';
 
 type props = {
-  todo: {
-    id: number
-    text: string
-  }
+  todo: Todo | undefined
   visible: boolean
   setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
