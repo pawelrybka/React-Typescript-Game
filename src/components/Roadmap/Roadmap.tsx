@@ -10,11 +10,11 @@ const Main = () => {
   
   const { todos } = useContext(Context);
   
-  const a = todos.find(todo => todo.id === selectedItemId)
-
   const [visible, setVisible] = useState(false)
 
   const [selectedItemId, setSelectedItemId] = useState<number | null>(null);
+
+  const a = todos.find(todo => todo.id === selectedItemId)
 
   const handleClick = (todoId: number) => {
     setVisible(!visible)

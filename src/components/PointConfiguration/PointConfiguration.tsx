@@ -20,7 +20,7 @@ const PointConfiguration = ({ visible, setVisible, todo}: props) => {
       transition={{ duration: 0.3 }}
     >
     <div className={styles.pointconfiguration__header}>
-      {/* <h2>{todo.text}</h2> */}
+      <h2>Tak</h2>
       <button onClick={() => setVisible(!visible)}><AiOutlineClose size={20}/></button>
     </div>
 
