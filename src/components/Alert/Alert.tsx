@@ -29,7 +29,7 @@ const Alert = ({ visible, setVisible }: props) => {
         <span>Do You want to delete this point ?</span>
         <div className={styles.buttonsection}>
           <button className={styles.no} onClick={() => setVisible(!visible)}>No</button>
-          <button className={styles.yes}>Yes</button>
+          <button className={styles.yes} onClick={() => removeTodo(selectedTodo)}>Yes</button>
         </div>
       </div>
     </motion.div>

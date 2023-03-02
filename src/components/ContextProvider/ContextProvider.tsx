@@ -21,8 +21,10 @@ const ContextProvider = ({ children }: ListProps) => {
     setTodos([...todos, todo]);
   };
 
-  const removeTodo = (id: number) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+  const removeTodo = (selectedTodo: Todo | null) => {
+    if (selectedTodo) {
+      setTodos(todos.filter((todo) => todo.id !== selectedTodo.id));
+    }
   };
 
   const toggleCompleted = (id: number) => {

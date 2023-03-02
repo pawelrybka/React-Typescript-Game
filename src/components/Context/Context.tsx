@@ -11,7 +11,7 @@ type TodosContextType = {
   selectedTodo: Todo | null;
   setSelectedTodo: (todo: Todo | null) => void;
   addTodo: (todo: Todo) => void;
-  removeTodo: (id: number) => void;
+  removeTodo: (todo: Todo | null) => void;
   toggleCompleted: (id: number) => void;
 }
 
