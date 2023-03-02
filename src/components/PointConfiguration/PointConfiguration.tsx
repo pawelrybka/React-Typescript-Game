@@ -2,9 +2,10 @@ import React from 'react';
 import styles from './PointConfiguration.module.css'
 import { AnimatePresence, motion } from "framer-motion";
 import { AiOutlineClose } from 'react-icons/ai'
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Alert from '../Alert/Alert';
 import Backdrop from '../Backdrop/Backdrop';
+import Context from '../Context/Context'
 
 type props = {
   visible: boolean
@@ -13,6 +14,8 @@ type props = {
 
 const PointConfiguration = ({ visible, setVisible}: props) => {
   
+  const { selectedTodo } = useContext(Context);
+
   const [alertVisible, setAlertVisible] = useState(false)
 
   const [finished, setFinished] = useState(true)
@@ -26,7 +29,7 @@ const PointConfiguration = ({ visible, setVisible}: props) => {
       transition={{ duration: 0.3 }}
     >
     <div className={styles.pointconfiguration__header}>
-      <h2>Tak</h2>
+      <h2>{selectedTodo?.text}</h2>
       <button onClick={() => setVisible(!visible)}><AiOutlineClose size={20}/></button>
     </div>
 
@@ -39,7 +42,7 @@ const PointConfiguration = ({ visible, setVisible}: props) => {
 
         <div className={styles.configuration__edit}>
           <div className={styles.container}>
-            <p>Title</p>
+            <p>Title: {selectedTodo?.text}</p>
             <button>Edit name and time</button>
           </div>
         </div>

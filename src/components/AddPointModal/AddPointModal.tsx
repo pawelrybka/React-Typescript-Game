@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './AddPointModal.module.css'
 import { AiOutlineClose } from 'react-icons/ai'
 import Context from '../Context/Context'
-import { useState, useContext, ChangeEvent } from 'react'
+import { useState, useContext } from 'react'
 import { motion } from "framer-motion"
 
 type AddPointModalProps = {

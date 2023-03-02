@@ -6,8 +6,8 @@ import { motion } from "framer-motion";
 
 type props ={ 
   alertVisible: boolean
-  setAlertVisible: React.Dispatch<React.SetStateAction<boolean>>
   visible: boolean
+  setAlertVisible: React.Dispatch<React.SetStateAction<boolean>>
   setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 
@@ -20,8 +20,6 @@ const Alert = ({ alertVisible, setAlertVisible, visible, setVisible }: props) =>
     removeTodo(selectedTodo)
     setVisible(!visible)
   }
-
-  console.log(visible)
 
   return (
     <motion.div 
