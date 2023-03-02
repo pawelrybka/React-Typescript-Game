@@ -5,7 +5,6 @@ import { useContext, useState } from 'react'
 import PointConfiguration from '../PointConfiguration/PointConfiguration'
 import { motion, AnimatePresence } from "framer-motion";
 import Backdrop from '../Backdrop/Backdrop'
-import { AiOutlineBorder } from 'react-icons/ai'
 
 const Main = () => {
   
@@ -27,7 +26,7 @@ const Main = () => {
       {todos.map((todo) => (
         <AnimatePresence>
           <motion.button 
-            whileHover={{ scale: 1.1  }}
+            whileHover={{ scale: 1.1, borderColor: "#ffffff" }}
             key={todo.id} 
             className={styles.point} 
             onClick={() => handleClick(todo.id)}

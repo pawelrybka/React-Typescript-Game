@@ -1,9 +1,11 @@
 .roadmap{
     flex: 1;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 1rem;
+    overflow: auto;
 }
 
 .roadmap p {
