@@ -15,6 +15,8 @@ const PointConfiguration = ({ visible, setVisible}: props) => {
   
   const [alertVisible, setAlertVisible] = useState(false)
 
+  const [finished, setFinished] = useState(true)
+
   return (
     <motion.div 
       className={styles.pointconfiguration}
@@ -42,10 +44,10 @@ const PointConfiguration = ({ visible, setVisible}: props) => {
           </div>
         </div>
 
-        <div className={styles.configuration__edit}>
+        <div className={`${styles.configuration__edit} ${finished ? styles.finished : ''}`}>
           <div className={styles.container}>
             <p>Not Finished</p>
-            <button>Marked as finished</button>
+            <button onClick={() => setFinished(!finished)}>Marked as finished</button>
           </div>
         </div>
 

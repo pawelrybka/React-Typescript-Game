@@ -57,10 +57,18 @@
     border-radius: 12px;
 }
 
+.finished{
+    background-color:var(--confirm-green);
+}
+
 .container{
     display: flex;
     justify-content: space-between;
     width: 100%;
+}
+
+.container p {
+    background-color: transparent;
 }
 
 .configuration__edit button {
@@ -104,6 +112,8 @@
     padding: 2rem;
     color: var(--text);
 }
+
+
 
 
 
