@@ -1,29 +1,41 @@
 import React, { useState } from "react";
-import { ListProps, Todo } from "../../assets/types";
-import Context from "../Context/Context";
 import styles from './ContextProvider.module.css'
+import Context from "../Context/Context";
 
-const ContextProvider = ( {children}: ListProps ) => {
+type Todo = {
+  id: number;
+  text: string;
+  completed: boolean;
+}
+
+type ListProps = {
+  children: React.ReactNode;
+}
+
+const ContextProvider = ({ children }: ListProps) => {
+  
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [idCounter, setIdCounter] = useState(0);
+  const [selectedTodo, setSelectedTodo] = useState<Todo | null>(null);
 
-  const addTodo = (text: string) => {
-    const newTodo = {
-      id: idCounter,
-      text: text,
-    };
-    setTodos([...todos, newTodo]);
-    setIdCounter(idCounter + 1);
+  const addTodo = (todo: Todo) => {
+    setTodos([...todos, todo]);
   };
 
   const removeTodo = (id: number) => {
-    const newTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(newTodos);
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
+  const toggleCompleted = (id: number) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
   };
 
   return (
     <div className={styles.root}>
-      <Context.Provider value={{ todos, addTodo, removeTodo }}>
+      <Context.Provider value={{ todos, selectedTodo, setSelectedTodo, addTodo, removeTodo, toggleCompleted }}>
         {children}
       </Context.Provider>
     </div>

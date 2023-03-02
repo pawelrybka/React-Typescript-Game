@@ -6,19 +6,21 @@ import PointConfiguration from '../PointConfiguration/PointConfiguration'
 import { motion, AnimatePresence } from "framer-motion";
 import Backdrop from '../Backdrop/Backdrop'
 
+type Todo = {
+  id: number;
+  text: string;
+  completed: boolean;
+}
+
 const Main = () => {
   
-  const { todos } = useContext(Context);
+  const { todos, setSelectedTodo } = useContext(Context);
   
   const [visible, setVisible] = useState(false)
 
-  const [selectedItemId, setSelectedItemId] = useState<number | null>(null);
-
-  const a = todos.find(todo => todo.id === selectedItemId)
-
-  const handleClick = (todoId: number) => {
+  const handleClick = (todo: Todo) => {
     setVisible(!visible)
-    setSelectedItemId(todoId);
+    setSelectedTodo(todo);
   }
   
   return (
@@ -29,7 +31,7 @@ const Main = () => {
             whileHover={{ scale: 1.1, borderColor: "#ffffff" }}
             key={todo.id} 
             className={styles.point} 
-            onClick={() => handleClick(todo.id)}
+            onClick={() => handleClick(todo)}
           >
             {todo.text}
             <span>To complete:</span>
@@ -43,7 +45,6 @@ const Main = () => {
             <PointConfiguration 
               visible={visible}
               setVisible={setVisible}
-              todo={a}
             />
             <Backdrop
               visible={visible}

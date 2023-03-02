@@ -1,19 +1,17 @@
 import React from 'react';
 import styles from './PointConfiguration.module.css'
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { AiOutlineClose } from 'react-icons/ai'
-import { Todo } from '../../assets/types';
 import { useState } from 'react';
 import Alert from '../Alert/Alert';
 import Backdrop from '../Backdrop/Backdrop';
 
 type props = {
-  todo: Todo 
   visible: boolean
   setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const PointConfiguration = ({ visible, setVisible, todo}: props) => {
+const PointConfiguration = ({ visible, setVisible}: props) => {
   
   const [alertVisible, setAlertVisible] = useState(false)
 
@@ -54,19 +52,24 @@ const PointConfiguration = ({ visible, setVisible, todo}: props) => {
         <button className={styles.configuration__add}>Add midpoint</button>
         <button className={styles.configuration__delete} onClick={() => setAlertVisible(!alertVisible)}>Delete roadmap point</button>
         <button className={styles.configuration__close} onClick={() => setVisible(!visible)}>Close</button>
-        {alertVisible && 
-          <Alert 
-            visible={alertVisible} 
-            setVisible={setAlertVisible}
-          />
-        }
-
+        <AnimatePresence>
+          {alertVisible && 
+            <>
+              <Alert 
+                visible={alertVisible} 
+                setVisible={setAlertVisible}
+              />
+              <Backdrop
+                visible={alertVisible} 
+                setVisible={setAlertVisible}
+              />
+            </>
+          }
+        </AnimatePresence>
       </div>
     </div>
-
     </motion.div>
   )
 }
 
 export default PointConfiguration
-

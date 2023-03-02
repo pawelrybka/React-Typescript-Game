@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './AddPointModal.module.css'
 import { AiOutlineClose } from 'react-icons/ai'
-import TodosContext from '../Context/Context'
+import Context from '../Context/Context'
 import { useState, useContext, ChangeEvent } from 'react'
 import { motion } from "framer-motion"
 
@@ -12,17 +12,17 @@ type AddPointModalProps = {
 
 const AddPointModal = ({ visible, setVisible }: AddPointModalProps) => {
 
-  const { addTodo } = useContext(TodosContext);
+  const { addTodo } = useContext(Context);
 
   const [inputValue, setInputValue] = useState("");
  
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  };
-
   const handleAddTodo = () => {
     if(inputValue === '') return;
-    addTodo(inputValue);
+    addTodo({
+      id: new Date().getTime(),
+      text: inputValue,
+      completed: false,
+    });
     setInputValue("");
     setVisible(!visible)
   };
@@ -45,7 +45,7 @@ const AddPointModal = ({ visible, setVisible }: AddPointModalProps) => {
         <div className={styles.panel}>
           <form className={styles.form}>
             <label>Roadmap point title</label>
-            <input type="text" value={inputValue} onChange={handleInputChange}/>
+            <input type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)}/>
           </form>
           <p>Suggestions:</p>
           <div className={styles.buttons}>
@@ -76,7 +76,6 @@ const AddPointModal = ({ visible, setVisible }: AddPointModalProps) => {
         </div>
         <button className={styles.confirm} onClick={handleAddTodo}>Confirm roadmap point</button>
       </div>
-      
     </motion.div>
   )
 }
