@@ -56,8 +56,10 @@ const PointConfiguration = ({ visible, setVisible}: props) => {
           {alertVisible && 
             <>
               <Alert 
-                visible={alertVisible} 
-                setVisible={setAlertVisible}
+                alertVisible={alertVisible} 
+                setAlertVisible={setAlertVisible}
+                visible={visible}
+                setVisible={setVisible}
               />
               <Backdrop
                 visible={alertVisible} 
