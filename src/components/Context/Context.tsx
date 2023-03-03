@@ -12,7 +12,7 @@ type TodosContextType = {
   setSelectedTodo: (todo: Todo | null) => void;
   addTodo: (todo: Todo) => void;
   removeTodo: (todo: Todo | null) => void;
-  toggleCompleted: (id: number) => void;
+  toggleCompleted: (id: number | undefined) => void;
 }
 
 const Context = createContext<TodosContextType>({

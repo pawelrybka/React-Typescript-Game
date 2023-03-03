@@ -14,11 +14,11 @@ type props = {
 
 const PointConfiguration = ({ visible, setVisible}: props) => {
   
-  const { selectedTodo } = useContext(Context);
+  const { selectedTodo, toggleCompleted } = useContext(Context);
 
   const [alertVisible, setAlertVisible] = useState(false)
 
-  const [finished, setFinished] = useState(true)
+  console.log(selectedTodo)
 
   return (
     <motion.div 
@@ -47,10 +47,10 @@ const PointConfiguration = ({ visible, setVisible}: props) => {
           </div>
         </div>
 
-        <div className={`${styles.configuration__edit} ${finished ? styles.finished : ''}`}>
+        <div className={styles.configuration__edit}>
           <div className={styles.container}>
             <p>Not Finished</p>
-            <button onClick={() => setFinished(!finished)}>Marked as finished</button>
+            <button onClick={() => toggleCompleted(selectedTodo?.id)}>Marked as finished</button>
           </div>
         </div>
 
