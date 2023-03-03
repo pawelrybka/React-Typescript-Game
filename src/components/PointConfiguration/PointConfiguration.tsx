@@ -6,6 +6,7 @@ import { useState, useContext } from 'react';
 import Alert from '../Alert/Alert';
 import Backdrop from '../Backdrop/Backdrop';
 import Context from '../Context/Context'
+import AddPointModal from '../AddPointModal/AddPointModal';
 
 type props = {
   visible: boolean

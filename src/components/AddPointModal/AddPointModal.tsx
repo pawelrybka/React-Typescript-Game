@@ -11,6 +11,11 @@ type AddPointModalProps = {
 }
 
 const AddPointModal = ({ visible, setVisible }: AddPointModalProps) => {
+  
+  const [days, setDays] = useState(0);
+  const [weeks, setWeeks] = useState(0)
+  const [months, setMonths] = useState(0);
+  const [years, setYears] = useState(0);
 
   const { addTodo } = useContext(Context);
 
@@ -21,6 +26,9 @@ const AddPointModal = ({ visible, setVisible }: AddPointModalProps) => {
     addTodo({
       id: new Date().getTime(),
       text: inputValue,
+      days: days, 
+      months: months,
+      years: years,
       completed: false,
     });
     setInputValue("");
@@ -29,11 +37,6 @@ const AddPointModal = ({ visible, setVisible }: AddPointModalProps) => {
 
   const tech = ["HTML", "CSS", "Javascript", "Typescript", "React", "Vue", "Tailwind", "SASS"]
 
-  const [days, setDays] = useState(0);
-  const [weeks, setWeeks] = useState(0)
-  const [months, setMonths] = useState(0);
-  const [years, setYears] = useState(0);
-  
   const handleDayIncrement = () => {
     setDays((prevDays) => prevDays + 1);
   };

@@ -5,6 +5,9 @@ import Context from "../Context/Context";
 type Todo = {
   id: number;
   text: string;
+  days: number;
+  months: number;
+  years: number;
   completed: boolean;
 }
 

@@ -9,6 +9,9 @@ import Backdrop from '../Backdrop/Backdrop'
 type Todo = {
   id: number;
   text: string;
+  days: number;
+  months: number;
+  years: number;
   completed: boolean;
 }
 
@@ -35,6 +38,9 @@ const Main = () => {
           >
             {todo.text}
             <span>To complete:</span>
+            <span>{todo.days} days</span>
+            <span>{todo.months} months</span>
+            <span>{todo.years} years</span>
             <span>Not finished</span>
           </motion.button>
         </AnimatePresence> 

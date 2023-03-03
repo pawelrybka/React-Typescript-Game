@@ -3,6 +3,9 @@ import { createContext } from "react";
 type Todo = {
   id: number;
   text: string;
+  days: number;
+  months: number;
+  years: number;
   completed: boolean;
 }
 
