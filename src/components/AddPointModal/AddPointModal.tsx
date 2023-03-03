@@ -29,6 +29,51 @@ const AddPointModal = ({ visible, setVisible }: AddPointModalProps) => {
 
   const tech = ["HTML", "CSS", "Javascript", "Typescript", "React", "Vue", "Tailwind", "SASS"]
 
+  const [days, setDays] = useState(0);
+  const [weeks, setWeeks] = useState(0)
+  const [months, setMonths] = useState(0);
+  const [years, setYears] = useState(0);
+  
+  const handleDayIncrement = () => {
+    setDays((prevDays) => prevDays + 1);
+  };
+
+  const handleDayDecrement = () => {
+    if (days > 0) {
+      setDays((prevDays) => prevDays - 1);
+    };
+  };
+
+  const handleWeeksIncrement = () => {
+    setWeeks((prevWeeks) => prevWeeks + 1);
+  };
+
+  const handleWeeksDecrement = () => {
+    if (weeks > 0) {
+      setWeeks((prevWeeks) => prevWeeks - 1);
+    };
+  };
+
+  const handleMonthIncrement = () => {
+    setMonths((prevMonths) => prevMonths + 1);
+  };
+
+  const handleMonthDecrement = () => {
+    if (months > 0) {
+      setMonths((prevMonths) => prevMonths - 1);
+    };
+  };
+
+  const handleYearIncrement = () => {
+    setYears((prevYears) => prevYears + 1);
+  };
+
+  const handleYearDecrement = () => {
+    if (years > 0) {
+      setYears((prevYears) => prevYears - 1);
+    };
+  };
+
   return (
     <motion.div 
       className={styles.addpointmodal}
@@ -56,21 +101,21 @@ const AddPointModal = ({ visible, setVisible }: AddPointModalProps) => {
           <div className={styles.timesection}>
             <div className={styles.timesection__header}>
               <span>Time to complete:</span>
-              <span>No time specified</span>
+              <span>{days} days, {weeks} weeks, {months} months, {years} years</span>
             </div>
             <div className={styles.timesection__buttons}>
-              <button>-1 Day</button>
+              <button onClick={handleDayDecrement}>-1 Day</button>
               <div>Days</div>
-              <button>+1 Day</button>
-              <button>-1 Week</button>
+              <button onClick={handleDayIncrement}>+1 Day</button>
+              <button onClick={handleWeeksDecrement}>-1 Week</button>
               <div>Weeks</div>
-              <button>+1 Week</button>
-              <button>-1 Month</button>
+              <button onClick={handleWeeksIncrement}>+1 Week</button>
+              <button onClick={handleMonthDecrement}>-1 Month</button>
               <div>Months</div>
-              <button>+1 Month</button>
-              <button>-1 Year</button>
+              <button onClick={handleMonthIncrement}>+1 Month</button>
+              <button onClick={handleYearDecrement}>-1 Year</button>
               <div>Years</div>
-              <button>+1 Year</button>
+              <button onClick={handleYearIncrement}>+1 Year</button>
             </div>
           </div>
         </div>

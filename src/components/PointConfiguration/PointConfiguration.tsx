@@ -14,11 +14,9 @@ type props = {
 
 const PointConfiguration = ({ visible, setVisible}: props) => {
   
-  const { selectedTodo, toggleCompleted } = useContext(Context);
+  const { selectedTodo } = useContext(Context);
 
   const [alertVisible, setAlertVisible] = useState(false)
-
-  console.log(selectedTodo)
 
   return (
     <motion.div 
@@ -50,11 +48,11 @@ const PointConfiguration = ({ visible, setVisible}: props) => {
         <div className={styles.configuration__edit}>
           <div className={styles.container}>
             <p>Not Finished</p>
-            <button onClick={() => toggleCompleted(selectedTodo?.id)}>Marked as finished</button>
+            <button>Marked as finished</button>
           </div>
         </div>
 
-        <button className={styles.configuration__add}>Add midpoint</button>
+        {/* <button className={styles.configuration__add}>Add midpoint</button> */}
         <button className={styles.configuration__delete} onClick={() => setAlertVisible(!alertVisible)}>Delete roadmap point</button>
         <button className={styles.configuration__close} onClick={() => setVisible(!visible)}>Close</button>
         <AnimatePresence>

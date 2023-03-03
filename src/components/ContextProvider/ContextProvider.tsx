@@ -27,7 +27,7 @@ const ContextProvider = ({ children }: ListProps) => {
     }
   };
 
-  const toggleCompleted = (id: number) => {
+  const toggleCompleted = (id: number | undefined) => {
     setTodos(
       todos.map((todo) =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
