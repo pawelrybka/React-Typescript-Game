@@ -41,7 +41,7 @@ const Main = () => {
             <span>{todo.days} days</span>
             <span>{todo.months} months</span>
             <span>{todo.years} years</span>
-            <span>Not finished</span>
+            {todo.completed ? <p>Finished</p> : <p>Not Finished</p>}
           </motion.button>
         </AnimatePresence> 
       ))}

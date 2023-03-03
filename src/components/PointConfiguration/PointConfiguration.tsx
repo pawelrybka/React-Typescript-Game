@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './PointConfiguration.module.css'
 import { AnimatePresence, motion } from "framer-motion";
 import { AiOutlineClose } from 'react-icons/ai'
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import Alert from '../Alert/Alert';
 import Context from '../Context/Context'
 
@@ -14,7 +14,7 @@ type props = {
 const PointConfiguration = ({ visible, setVisible}: props) => {
   
   const { selectedTodo, addPointModalVisible, setAddPointModalVisible, alertVisible, setAlertVisible, toggleCompleted } = useContext(Context);
-
+  
   return (
     <motion.div 
       className={styles.pointconfiguration}
@@ -44,8 +44,8 @@ const PointConfiguration = ({ visible, setVisible}: props) => {
 
         <div className={`${styles.configuration__edit} ${selectedTodo?.completed ? styles.green : ''}`}>
           <div className={styles.container}>
-            <p>Not Finished</p>
-            <button onClick={() => toggleCompleted(selectedTodo?.id) }>Marked as finished</button>
+            {selectedTodo?.completed ? <p>Finished</p> : <p>Not Finished</p>}
+            <button onClick={() => toggleCompleted(selectedTodo?.id)}>Marked as finished</button>
           </div>
         </div>
 
