@@ -4,9 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { AiOutlineClose } from 'react-icons/ai'
 import { useState, useContext } from 'react';
 import Alert from '../Alert/Alert';
-import Backdrop from '../Backdrop/Backdrop';
 import Context from '../Context/Context'
-import AddPointModal from '../AddPointModal/AddPointModal';
 
 type props = {
   visible: boolean
@@ -15,9 +13,7 @@ type props = {
 
 const PointConfiguration = ({ visible, setVisible}: props) => {
   
-  const { selectedTodo } = useContext(Context);
-
-  const [alertVisible, setAlertVisible] = useState(false)
+  const { selectedTodo, addPointModalVisible, setAddPointModalVisible, alertVisible, setAlertVisible, toggleCompleted } = useContext(Context);
 
   return (
     <motion.div 
@@ -42,14 +38,14 @@ const PointConfiguration = ({ visible, setVisible}: props) => {
         <div className={styles.configuration__edit}>
           <div className={styles.container}>
             <p>Title: {selectedTodo?.text}</p>
-            <button>Edit name and time</button>
+            <button onClick={() => setAddPointModalVisible(!addPointModalVisible)}>Edit name and time</button>
           </div>
         </div>
 
-        <div className={styles.configuration__edit}>
+        <div className={`${styles.configuration__edit} ${selectedTodo?.completed ? styles.green : ''}`}>
           <div className={styles.container}>
             <p>Not Finished</p>
-            <button>Marked as finished</button>
+            <button onClick={() => toggleCompleted(selectedTodo?.id) }>Marked as finished</button>
           </div>
         </div>
 
@@ -60,14 +56,8 @@ const PointConfiguration = ({ visible, setVisible}: props) => {
           {alertVisible && 
             <>
               <Alert 
-                alertVisible={alertVisible} 
-                setAlertVisible={setAlertVisible}
                 visible={visible}
                 setVisible={setVisible}
-              />
-              <Backdrop
-                visible={alertVisible} 
-                setVisible={setAlertVisible}
               />
             </>
           }

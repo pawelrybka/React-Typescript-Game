@@ -1,31 +1,29 @@
 import React from 'react'
 import AddPointModal from '../AddPointModal/AddPointModal'
 import Backdrop from '../Backdrop/Backdrop'
-import { useState } from 'react'
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import styles from './AddPointButton.module.css'
 import { AnimatePresence } from 'framer-motion'
+import Context from '../Context/Context'
+import { useState, useContext } from 'react'
 
 const AddPointButton = () => {
   
-  const[visible, setVisible] = useState(false)
-  
+  const { addPointModalVisible, setAddPointModalVisible } = useContext(Context);
+
   return (
     <>
-      <button className={styles.addPointButton} onClick={() => setVisible(!visible)}>
+      <button className={styles.addPointButton} onClick={() => setAddPointModalVisible(!addPointModalVisible)}>
         <AiOutlinePlusCircle size={40}/>
         <span>Add new point</span>
       </button>
       <AnimatePresence>
-        {visible && 
+        {addPointModalVisible && 
           <>
-            <AddPointModal 
-              visible={visible}
-              setVisible={setVisible}
-            />
+            <AddPointModal/>
             <Backdrop
-              visible={visible}
-              setVisible={setVisible}
+              visible={addPointModalVisible}
+              setVisible={setAddPointModalVisible}
             />
           </>
         }

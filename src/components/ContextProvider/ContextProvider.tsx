@@ -38,9 +38,13 @@ const ContextProvider = ({ children }: ListProps) => {
     );
   };
 
+  const [addPointModalVisible, setAddPointModalVisible] = useState<boolean>(false);
+
+  const [alertVisible, setAlertVisible] = useState<boolean>(false);
+
   return (
     <div className={styles.root}>
-      <Context.Provider value={{ todos, selectedTodo, setSelectedTodo, addTodo, removeTodo, toggleCompleted }}>
+      <Context.Provider value={{ todos, selectedTodo, setSelectedTodo, addTodo, removeTodo, toggleCompleted, addPointModalVisible, setAddPointModalVisible, alertVisible, setAlertVisible }}>
         {children}
       </Context.Provider>
     </div>

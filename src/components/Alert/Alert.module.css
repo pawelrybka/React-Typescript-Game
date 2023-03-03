@@ -6,7 +6,6 @@
     width: min(90%, 600px, 90vw);
     max-height: 80vh;
     border-radius: 20px;
-    z-index: 3;
     border: 1px solid var(--light-blue);
     display: flex;
     flex-direction: column;
@@ -56,4 +55,6 @@
     cursor: pointer;
 }
 
-
+.overflow{
+    z-index: 2000;
+}

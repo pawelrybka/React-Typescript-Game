@@ -16,6 +16,10 @@ type TodosContextType = {
   addTodo: (todo: Todo) => void;
   removeTodo: (todo: Todo | null) => void;
   toggleCompleted: (id: number | undefined) => void;
+  addPointModalVisible: boolean;
+  setAddPointModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  alertVisible: boolean;
+  setAlertVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Context = createContext<TodosContextType>({
@@ -25,6 +29,10 @@ const Context = createContext<TodosContextType>({
   addTodo: () => {},
   removeTodo: () => {},
   toggleCompleted: () => {},
+  addPointModalVisible: false,
+  setAddPointModalVisible: () => {},
+  alertVisible: false,
+  setAlertVisible: () => {}
 });
 
 export default Context;

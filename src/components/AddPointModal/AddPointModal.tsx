@@ -5,13 +5,10 @@ import Context from '../Context/Context'
 import { useState, useContext } from 'react'
 import { motion } from "framer-motion"
 
-type AddPointModalProps = {
-  visible: boolean
-  setVisible: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-const AddPointModal = ({ visible, setVisible }: AddPointModalProps) => {
+const AddPointModal = () => {
   
+  const { addPointModalVisible, setAddPointModalVisible } = useContext(Context);
+
   const [days, setDays] = useState(0);
   const [weeks, setWeeks] = useState(0)
   const [months, setMonths] = useState(0);
@@ -32,7 +29,7 @@ const AddPointModal = ({ visible, setVisible }: AddPointModalProps) => {
       completed: false,
     });
     setInputValue("");
-    setVisible(!visible)
+    setAddPointModalVisible(!addPointModalVisible)
   };
 
   const tech = ["HTML", "CSS", "Javascript", "Typescript", "React", "Vue", "Tailwind", "SASS"]
@@ -87,7 +84,7 @@ const AddPointModal = ({ visible, setVisible }: AddPointModalProps) => {
     >
       <div className={styles.addpointmodal__header}>
         <h3>Add roadmap point</h3>
-        <button onClick={() => setVisible(!visible)}><AiOutlineClose size={20}/></button>
+        <button onClick={() => setAddPointModalVisible(!addPointModalVisible)}><AiOutlineClose size={20}/></button>
       </div>
       <div className={styles.addpointmodal__content}>
         <div className={styles.panel}>
