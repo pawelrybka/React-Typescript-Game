@@ -7,14 +7,12 @@ import { motion } from "framer-motion"
 
 const AddPointModal = () => {
   
-  const { addPointModalVisible, setAddPointModalVisible } = useContext(Context);
+  const { addPointModalVisible, setAddPointModalVisible, addTodo } = useContext(Context);
 
   const [days, setDays] = useState(0);
   const [weeks, setWeeks] = useState(0)
   const [months, setMonths] = useState(0);
   const [years, setYears] = useState(0);
-
-  const { addTodo } = useContext(Context);
 
   const [inputValue, setInputValue] = useState("");
  
@@ -25,6 +23,7 @@ const AddPointModal = () => {
       text: inputValue,
       days: days, 
       months: months,
+      weeks: weeks,
       years: years,
       completed: false,
     });

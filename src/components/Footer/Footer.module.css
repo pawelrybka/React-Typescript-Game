@@ -1,6 +1,13 @@
 .footer{
     padding: 2rem;
     text-align: center;
-    background-color: var(--dark-blue);
+    background-color: var(--background-blue);
+}
+
+.footer a{
+    color: var(--text);
+    font-size: 1.2rem;
+    text-decoration: none;
+    
 }
 

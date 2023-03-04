@@ -12,6 +12,7 @@ type Todo = {
   days: number;
   months: number;
   years: number;
+  weeks: number;
   completed: boolean;
 }
 
@@ -37,6 +38,7 @@ const Main = () => {
             {todo.text}
             <span>To complete:</span>
             <span>{todo.days} days</span>
+            <span>{todo.weeks} weeks</span>
             <span>{todo.months} months</span>
             <span>{todo.years} years</span>
             {todo.completed ? <p>Finished</p> : <p>Not Finished</p>}
