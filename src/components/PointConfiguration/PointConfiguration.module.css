@@ -115,7 +115,7 @@
 }
 
 .green{
-    background-color: green;
+    background-color: var(--confirm-green);
 }
 
 

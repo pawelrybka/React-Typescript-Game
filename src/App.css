@@ -1,9 +1,9 @@
 :root{
   --font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   --text: rgba(255, 255, 255);
-  --light-blue: rgb(37,107,237);
-  --dark-blue: rgb(23,34,54);
-  --background-blue: rgb(12,22,45);
+  --light-blue: rgb(102,42,237);
+  --dark-blue: rgb(26, 34, 36);
+  --background-blue: rgb(14,18,19);
   --confirm-green: rgb(55,137,55);
 }
 
@@ -15,7 +15,7 @@
 
 body {
   font-family: var(--font-family);
-  background-color: black;
+  background-color: var(--background-blue);
   color: var(--text)
 }
 
