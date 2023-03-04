@@ -25,15 +25,13 @@ const Main = () => {
     setVisible(!visible)
     setSelectedTodo(todo);
   }
-  
+
   return (
     <div className={styles.roadmap}>
       {todos.map((todo) => (
-        <AnimatePresence>
-          <motion.button 
-            whileHover={{ scale: 1.1, borderColor: "#ffffff" }}
+          <button 
             key={todo.id} 
-            className={styles.point} 
+            className={`${styles.point} ${todo.completed ? styles.finished : ''}`} 
             onClick={() => handleClick(todo)}
           >
             {todo.text}
@@ -42,8 +40,7 @@ const Main = () => {
             <span>{todo.months} months</span>
             <span>{todo.years} years</span>
             {todo.completed ? <p>Finished</p> : <p>Not Finished</p>}
-          </motion.button>
-        </AnimatePresence> 
+          </button>
       ))}
       <AnimatePresence>
         {visible &&
@@ -51,6 +48,7 @@ const Main = () => {
             <PointConfiguration 
               visible={visible}
               setVisible={setVisible}
+              
             />
             <Backdrop
               visible={visible}
@@ -58,7 +56,7 @@ const Main = () => {
             />
           </>  
         }
-      </AnimatePresence>  
+      </AnimatePresence> 
     </div>  
   )
 }

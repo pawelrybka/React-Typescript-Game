@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from './ContextProvider.module.css'
 import Context from "../Context/Context";
 
@@ -18,7 +18,27 @@ type ListProps = {
 const ContextProvider = ({ children }: ListProps) => {
   
   const [todos, setTodos] = useState<Todo[]>([]);
+ 
   const [selectedTodo, setSelectedTodo] = useState<Todo | null>(null);
+
+  useEffect(() => {
+
+    const todoListJson = localStorage.getItem('todos');
+
+    if (todoListJson) {
+      const todos = JSON.parse(todoListJson);
+      setTodos(todos);
+    } else {
+      setTodos([]);
+    }
+  }, []);
+
+  
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
+
 
   const addTodo = (todo: Todo) => {
     setTodos([...todos, todo]);
@@ -31,11 +51,10 @@ const ContextProvider = ({ children }: ListProps) => {
   };
 
   const toggleCompleted = (id: number | undefined) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
+    const updatedTodos = todos.map(todo =>
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
     );
+    setTodos(updatedTodos);
   };
 
   const [addPointModalVisible, setAddPointModalVisible] = useState<boolean>(false);
