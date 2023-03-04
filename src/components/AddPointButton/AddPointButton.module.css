@@ -9,5 +9,9 @@
     cursor: pointer;
     background-color: var(--light-blue);
     color: var(--text);
+    transition: .3s ease-in-out;
 }
 
+.addPointButton:hover{
+    transform: scale(110%);
+}
