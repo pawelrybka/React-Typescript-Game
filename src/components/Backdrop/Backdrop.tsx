@@ -11,11 +11,9 @@ type props = {
 
 const Backdrop = ({visible, setVisible}: props) => {
 
-  const { alertVisible } = useContext(Context);
-
   return (
     <motion.div 
-      className={`${styles.backdrop} ${alertVisible ? styles.overflow : ''}`}  
+      className={styles.backdrop} 
       initial={{  opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

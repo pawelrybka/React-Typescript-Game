@@ -5,6 +5,7 @@ import { AiOutlineClose } from 'react-icons/ai'
 import { useContext } from 'react';
 import Alert from '../Alert/Alert';
 import Context from '../Context/Context'
+import Backdrop from '../Backdrop/Backdrop';
 
 type props = {
   visible: boolean
@@ -59,6 +60,10 @@ const PointConfiguration = ({ visible, setVisible}: props) => {
                 visible={visible}
                 setVisible={setVisible}
               />
+              {/* <Backdrop
+                visible={visible}
+                setVisible={setVisible}
+              /> */}
             </>
           }
         </AnimatePresence>
