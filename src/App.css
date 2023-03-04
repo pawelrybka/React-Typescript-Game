@@ -15,7 +15,7 @@
 
 body {
   font-family: var(--font-family);
-  background-color: var(--background-blue);
+  background-color: black;
   color: var(--text)
 }
 

@@ -1,13 +1,12 @@
 .footer{
     padding: 2rem;
     text-align: center;
-    background-color: var(--background-blue);
+    background-color: black;
 }
 
 .footer a{
     color: var(--text);
     font-size: 1.2rem;
     text-decoration: none;
-    
 }
 

@@ -4,9 +4,9 @@ import { TfiHandPointRight, TfiHandPointLeft } from 'react-icons/tfi';
 const Footer = () => {
   return (
     <div className={styles.footer}>
-      <a href="https://github.com/pawelrybka/Roadmapper" target='_blank'>
+      <a href="https://github.com/pawelrybka/CodeRoad.git" target='_blank'>
         <TfiHandPointRight size={40}/>
-        Check the code
+        Check the code here!
         <TfiHandPointLeft size={40}/>
       </a>
     </div>
