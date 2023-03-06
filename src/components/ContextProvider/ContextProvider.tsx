@@ -45,8 +45,8 @@ const ContextProvider = ({ children }: ListProps) => {
     setTodos([...todos, todo]);
   };
 
-  const removeTodo = (id: number) => {
-    const updatedTodos = todos.filter(todo => todo.id !== id);
+  const removeTodo = (param: Todo | null) => {
+    const updatedTodos = todos.filter(todo => todo !== param);
     setTodos(updatedTodos);
   };
 
