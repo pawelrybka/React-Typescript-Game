@@ -15,7 +15,7 @@ type TodosContextType = {
   selectedTodo: Todo | null;
   setSelectedTodo: (todo: Todo | null) => void;
   addTodo: (todo: Todo) => void;
-  removeTodo: (todo: Todo) => void;
+  removeTodo: (todo: Todo | null) => void;
   toggleCompleted: (id: number | undefined) => void;
   addPointModalVisible: boolean;
   setAddPointModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
