@@ -45,17 +45,21 @@ const ContextProvider = ({ children }: ListProps) => {
     setTodos([...todos, todo]);
   };
 
-  const removeTodo = (selectedTodo: Todo | null) => {
-    if (selectedTodo) {
-      setTodos(todos.filter((todo) => todo.id !== selectedTodo.id));
-    }
+  const removeTodo = (id: number) => {
+    const updatedTodos = todos.filter(todo => todo.id !== id);
+    setTodos(updatedTodos);
   };
 
-  const toggleCompleted = (id: number | undefined) => {
-    const updatedTodos = todos.map(todo =>
-      todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    );
-    setTodos(updatedTodos);
+  const toggleCompleted = () => {
+    if (selectedTodo !== null) {
+      const updatedTodos = todos.map(todo => {
+        if (todo.id === selectedTodo.id) {
+          return { ...todo, completed: !todo.completed };
+        }
+        return todo;
+      });
+      setTodos(updatedTodos);
+    };
   };
 
   const [addPointModalVisible, setAddPointModalVisible] = useState<boolean>(false);

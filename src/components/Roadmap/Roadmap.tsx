@@ -18,14 +18,9 @@ type Todo = {
 
 const Main = () => {
   
-  const { todos, setSelectedTodo } = useContext(Context);
+  const { todos, setSelectedTodo, selectedTodo } = useContext(Context);
   
   const [visible, setVisible] = useState(false)
-
-  const handleClick = (todo: Todo) => {
-    setVisible(!visible)
-    setSelectedTodo(todo);
-  }
 
   return (
     <div className={styles.roadmap}>
@@ -33,7 +28,10 @@ const Main = () => {
           <button 
             key={todo.id} 
             className={`${styles.point} ${todo.completed ? styles.finished : ''}`} 
-            onClick={() => handleClick(todo)}
+            onClick={() => {
+              setVisible(!visible)
+              setSelectedTodo(todo);
+            }}
           >
             {todo.text}
             <span>To complete:</span>
@@ -45,7 +43,7 @@ const Main = () => {
           </button>
       ))}
       <AnimatePresence>
-        {visible &&
+        {visible && selectedTodo &&
           <>
             <PointConfiguration 
               visible={visible}
