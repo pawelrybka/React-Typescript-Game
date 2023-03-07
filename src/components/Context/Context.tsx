@@ -12,15 +12,22 @@ type Todo = {
 
 type TodosContextType = {
   todos: Todo[];
-  selectedTodo: Todo | null;
-  setSelectedTodo: (todo: Todo | null) => void;
   addTodo: (todo: Todo) => void;
   removeTodo: (todo: Todo | null) => void;
   toggleCompleted: (id: number | undefined) => void;
+  
+  selectedTodo: Todo | null;
+  setSelectedTodo: (todo: Todo | null) => void;
+
   addPointModalVisible: boolean;
   setAddPointModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  
   alertVisible: boolean;
   setAlertVisible: React.Dispatch<React.SetStateAction<boolean>>;
+
+  configurationVisible: boolean;
+  setConfigurationVisible: React.Dispatch<React.SetStateAction<boolean>>;
+
 }
 
 const Context = createContext<TodosContextType>({
@@ -30,10 +37,16 @@ const Context = createContext<TodosContextType>({
   addTodo: () => {},
   removeTodo: () => {},
   toggleCompleted: () => {},
+  
   addPointModalVisible: false,
   setAddPointModalVisible: () => {},
+  
   alertVisible: false,
-  setAlertVisible: () => {}
+  setAlertVisible: () => {},
+
+  configurationVisible: false,
+  setConfigurationVisible: () => {},
+
 });
 
 export default Context;

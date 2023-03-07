@@ -1,27 +1,14 @@
 import React from 'react'
 import styles from './Roadmap.module.css'
 import Context from '../Context/Context'
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import PointConfiguration from '../PointConfiguration/PointConfiguration'
-import { motion, AnimatePresence } from "framer-motion";
-import Backdrop from '../Backdrop/Backdrop'
-
-type Todo = {
-  id: number;
-  text: string;
-  days: number;
-  months: number;
-  years: number;
-  weeks: number;
-  completed: boolean;
-}
+import { AnimatePresence } from "framer-motion";
 
 const Main = () => {
   
-  const { todos, setSelectedTodo, selectedTodo } = useContext(Context);
+  const { todos, setSelectedTodo, selectedTodo, configurationVisible, setConfigurationVisible } = useContext(Context);
   
-  const [visible, setVisible] = useState(false)
-
   return (
     <div className={styles.roadmap}>
       {todos.map((todo) => (
@@ -29,7 +16,7 @@ const Main = () => {
             key={todo.id} 
             className={`${styles.point} ${todo.completed ? styles.finished : ''}`} 
             onClick={() => {
-              setVisible(!visible)
+              setConfigurationVisible(!configurationVisible)
               setSelectedTodo(todo);
             }}
           >
@@ -43,19 +30,7 @@ const Main = () => {
           </button>
       ))}
       <AnimatePresence>
-        {visible && selectedTodo &&
-          <>
-            <PointConfiguration 
-              visible={visible}
-              setVisible={setVisible}
-              
-            />
-            <Backdrop
-              visible={visible}
-              setVisible={setVisible}
-            />
-          </>  
-        }
+        {selectedTodo && configurationVisible && <PointConfiguration/>}
       </AnimatePresence> 
     </div>  
   )

@@ -9,6 +9,7 @@
     border: 1px solid var(--light-blue);
     display: flex;
     flex-direction: column;
+    z-index: 3;
 }
 
 .alert__header{
@@ -53,8 +54,4 @@
     border-radius: 12px;
     color: var(--text); 
     cursor: pointer;
-}
-
-.overflow{
-    z-index: 2000;
 }

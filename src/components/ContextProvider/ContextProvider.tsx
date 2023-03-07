@@ -22,6 +22,12 @@ const ContextProvider = ({ children }: ListProps) => {
  
   const [selectedTodo, setSelectedTodo] = useState<Todo | null>(null);
 
+  const [addPointModalVisible, setAddPointModalVisible] = useState<boolean>(false);
+
+  const [alertVisible, setAlertVisible] = useState<boolean>(false);
+
+  const [configurationVisible, setConfigurationVisible] = useState(false)
+
   useEffect(() => {
 
     const todoListJson = localStorage.getItem('todos');
@@ -38,7 +44,6 @@ const ContextProvider = ({ children }: ListProps) => {
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
-
 
 
   const addTodo = (todo: Todo) => {
@@ -62,13 +67,9 @@ const ContextProvider = ({ children }: ListProps) => {
     };
   };
 
-  const [addPointModalVisible, setAddPointModalVisible] = useState<boolean>(false);
-
-  const [alertVisible, setAlertVisible] = useState<boolean>(false);
-
   return (
     <div className={styles.root}>
-      <Context.Provider value={{ todos, selectedTodo, setSelectedTodo, addTodo, removeTodo, toggleCompleted, addPointModalVisible, setAddPointModalVisible, alertVisible, setAlertVisible }}>
+      <Context.Provider value={{ todos, selectedTodo, setSelectedTodo, addTodo, removeTodo, toggleCompleted, addPointModalVisible, setAddPointModalVisible, alertVisible, setAlertVisible, configurationVisible, setConfigurationVisible }}>
         {children}
       </Context.Provider>
     </div>

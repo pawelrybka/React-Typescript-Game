@@ -5,7 +5,7 @@ import { AiOutlinePlusCircle } from 'react-icons/ai';
 import styles from './AddPointButton.module.css'
 import { AnimatePresence } from 'framer-motion'
 import Context from '../Context/Context'
-import { useState, useContext } from 'react'
+import {  useContext } from 'react'
 
 const AddPointButton = () => {
   
@@ -21,10 +21,7 @@ const AddPointButton = () => {
         {addPointModalVisible && 
           <>
             <AddPointModal/>
-            <Backdrop
-              visible={addPointModalVisible}
-              setVisible={setAddPointModalVisible}
-            />
+            <Backdrop/>
           </>
         }
       </AnimatePresence>  

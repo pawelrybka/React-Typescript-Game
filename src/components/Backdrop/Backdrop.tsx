@@ -1,25 +1,20 @@
+import React, { useContext } from 'react'
 import styles from './Backdrop.module.css'
-import React from 'react'
-import { motion } from 'framer-motion'
 import Context from '../Context/Context'
-import { useState, useContext } from 'react'
+// import { motion } from 'framer-motion'
 
-type props = { 
-  visible: boolean
-  setVisible: React.Dispatch<React.SetStateAction<boolean>>
-}
+const Backdrop = () => {
 
-const Backdrop = ({visible, setVisible}: props) => {
+  const{ alertVisible } = useContext(Context)
 
   return (
-    <motion.div 
-      className={styles.backdrop} 
-      initial={{  opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: .3 }}
-      onClick={() => setVisible(!visible)}
-    ></motion.div>
+    <div 
+      className={`${styles.backdrop} ${alertVisible ? styles.up : ''}`} 
+      // initial={{  opacity: 0 }}
+      // animate={{ opacity: 1 }}
+      // exit={{ opacity: 0 }}
+      // transition={{ duration: .3 }}
+    ></div>
   )
 }
 

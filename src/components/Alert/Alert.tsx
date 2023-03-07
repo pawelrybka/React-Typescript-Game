@@ -4,24 +4,19 @@ import styles from './Alert.module.css'
 import { AiOutlineClose } from 'react-icons/ai'
 import { motion } from "framer-motion";
 
-type props ={ 
-  visible: boolean
-  setVisible: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-const Alert = ({ visible, setVisible }: props) => {
+const Alert = () => {
   
-  const { removeTodo, selectedTodo, alertVisible, setAlertVisible, } = useContext(Context);
+  const { removeTodo, selectedTodo, alertVisible, setAlertVisible, configurationVisible, setConfigurationVisible } = useContext(Context);
 
   const handleRemove = () => {
     setAlertVisible(!alertVisible)
     removeTodo(selectedTodo)
-    setVisible(!visible)
+    setConfigurationVisible(!configurationVisible)
   }
 
   return (
     <motion.div 
-      className={`${styles.alert} ${alertVisible ? styles.overflow : ''}`}
+      className={styles.alert}
       initial={{  opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
