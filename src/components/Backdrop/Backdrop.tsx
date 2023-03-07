@@ -5,11 +5,11 @@ import { motion } from 'framer-motion'
 
 const Backdrop = () => {
 
-  const{ alertVisible } = useContext(Context)
+  const{ alertVisible, addPointModalVisible } = useContext(Context)
 
   return (
     <motion.div 
-      className={`${styles.backdrop} ${alertVisible ? styles.up : ''}`} 
+      className={`${styles.backdrop} ${alertVisible ? styles.up : ''} ${addPointModalVisible ? styles.up : ''}`} 
       initial={{  opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

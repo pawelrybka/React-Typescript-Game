@@ -18,12 +18,7 @@ const AddPointButton = () => {
         <span>Add new point</span>
       </button>
       <AnimatePresence>
-        {addPointModalVisible && 
-          <>
-            <AddPointModal/>
-            <Backdrop/>
-          </>
-        }
+        {addPointModalVisible && <AddPointModal/>}
       </AnimatePresence>  
     </>
   )

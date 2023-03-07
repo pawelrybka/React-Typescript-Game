@@ -6,7 +6,7 @@
     width: min(90%, 600px, 90vw);
     max-height: 80vh;
     border-radius: 20px;
-    z-index: 2;
+    z-index: 10;
     border: 1px solid var(--light-blue);
     display: flex;
     flex-direction: column;
