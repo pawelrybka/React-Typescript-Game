@@ -58,9 +58,9 @@ const PointConfiguration = () => {
       </motion.div>
 
       <AnimatePresence>
-        <Backdrop/>
         {alertVisible && <Alert/>}
       </AnimatePresence>
+      <Backdrop/>
     </>
   )
 }
