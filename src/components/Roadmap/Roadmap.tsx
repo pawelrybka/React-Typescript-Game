@@ -9,6 +9,10 @@ const Main = () => {
   
   const { todos, setSelectedTodo, configurationVisible, setConfigurationVisible } = useContext(Context);
   
+  if (todos.length === 0) {
+    return <div className={styles.roadmap}>Add some points</div>;
+  }
+
   return (
     <div className={styles.roadmap}>
       {todos.map((todo) => (
@@ -29,6 +33,7 @@ const Main = () => {
           {todo.completed ? <p>Finished</p> : <p>Not Finished</p>}
         </button>
       ))}
+    
       <AnimatePresence>
         {configurationVisible && <PointConfiguration/>}
       </AnimatePresence> 
