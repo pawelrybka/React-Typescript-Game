@@ -79,7 +79,7 @@
 }
 
 .buttons input{
-    padding: 1rem;
+    padding: 1.5rem;
     border-radius: 10px;
     border: none;
     background-color: var(--light-blue);
