@@ -81,7 +81,7 @@ const ContextProvider = ({ children }: ListProps) => {
   return (
     <div className={styles.root}>
       <Context.Provider value={{ 
-        todos, 
+        todos, setTodos,
         selectedTodo, setSelectedTodo, 
         addTodo, removeTodo, toggleCompleted, editTodo,
         addPointModalVisible, setAddPointModalVisible, 

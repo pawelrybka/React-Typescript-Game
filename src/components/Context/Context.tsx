@@ -12,6 +12,8 @@ type Todo = {
 
 type TodosContextType = {
   todos: Todo[];
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+
   addTodo: (todo: Todo) => void;
   removeTodo: (todo: Todo | null) => void;
   toggleCompleted: (id: number | undefined) => void;
@@ -33,6 +35,7 @@ type TodosContextType = {
 
 const Context = createContext<TodosContextType>({
   todos: [],
+  setTodos: () => {},
 
   addTodo: () => {},
   removeTodo: () => {},
