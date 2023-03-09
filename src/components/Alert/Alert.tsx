@@ -6,12 +6,18 @@ import { motion } from "framer-motion";
 
 const Alert = () => {
   
-  const { removeTodo, selectedTodo, alertVisible, setAlertVisible, configurationVisible, setConfigurationVisible } = useContext(Context);
+  const { 
+    selectedTodo, setSelectedTodo,
+    removeTodo, 
+    alertVisible, setAlertVisible, 
+    configurationVisible, setConfigurationVisible 
+  } = useContext(Context);
 
   const handleRemove = () => {
     setAlertVisible(!alertVisible)
     removeTodo(selectedTodo)
     setConfigurationVisible(!configurationVisible)
+    setSelectedTodo(null)
   }
 
   return (

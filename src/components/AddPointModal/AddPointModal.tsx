@@ -37,6 +37,7 @@ const AddPointModal = () => {
     });
     setInputValue("");
     setAddPointModalVisible(!addPointModalVisible)
+    setSelectedTodo(null)
   };
 
   const handleEditTodo = () => {

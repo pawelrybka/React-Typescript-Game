@@ -9,7 +9,13 @@ import Backdrop from '../Backdrop/Backdrop';
 
 const PointConfiguration = () => {
   
-  const { selectedTodo, addPointModalVisible, setAddPointModalVisible, alertVisible, setAlertVisible, toggleCompleted, todos, configurationVisible, setConfigurationVisible } = useContext(Context);
+  const { 
+    todos, 
+    selectedTodo, setSelectedTodo,
+    addPointModalVisible, setAddPointModalVisible, 
+    alertVisible, setAlertVisible, toggleCompleted, 
+    configurationVisible, setConfigurationVisible 
+  } = useContext(Context);
   
   return (
     <>
@@ -22,7 +28,14 @@ const PointConfiguration = () => {
       >
         <div className={styles.pointconfiguration__header}>
           <h2>{selectedTodo?.text}</h2>
-          <button onClick={() => setConfigurationVisible(!configurationVisible)}><AiOutlineClose size={20}/></button>
+          <button 
+            onClick={() => {
+              setConfigurationVisible(!configurationVisible)
+              setSelectedTodo(null)
+            }}
+          >
+            <AiOutlineClose size={20}/>
+          </button>
         </div>
 
         <div className={styles.pointconfiguration__content}>
@@ -51,8 +64,15 @@ const PointConfiguration = () => {
         
             {/* <button className={styles.configuration__add}>Add midpoint</button> */}
             <button className={styles.configuration__delete} onClick={() => setAlertVisible(!alertVisible)}>Delete roadmap point</button>
-            <button className={styles.configuration__close} onClick={() => setConfigurationVisible(!configurationVisible)}>Close</button>
-          
+            <button 
+              className={styles.configuration__close} 
+              onClick={() => {
+                setConfigurationVisible(!configurationVisible)
+                setSelectedTodo(null)
+              }}
+            >
+              Close
+            </button>
           </div>
         </div>
       </motion.div>
