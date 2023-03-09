@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import Context from '../Context/Context'
 import styles from './Alert.module.css'
 import { AiOutlineClose } from 'react-icons/ai'
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Backdrop from '../Backdrop/Backdrop';
 
 const Alert = () => {
