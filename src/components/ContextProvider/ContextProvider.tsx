@@ -22,11 +22,12 @@ const ContextProvider = ({ children }: ListProps) => {
  
   const [selectedTodo, setSelectedTodo] = useState<Todo | null>(null);
 
-  const [addPointModalVisible, setAddPointModalVisible] = useState<boolean>(false);
-
-  const [alertVisible, setAlertVisible] = useState<boolean>(false);
+  const [addPointModalVisible, setAddPointModalVisible] = useState(false);
 
   const [configurationVisible, setConfigurationVisible] = useState(false)
+
+  const [alertVisible, setAlertVisible] = useState(false);
+
 
   useEffect(() => {
 
@@ -67,9 +68,26 @@ const ContextProvider = ({ children }: ListProps) => {
     };
   };
 
+  const editTodo = (props: string) => {
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === selectedTodo?.id) {
+        return { ...todo, text: props };
+      }
+      return todo;
+    });
+    setTodos(updatedTodos);
+  }
+
   return (
     <div className={styles.root}>
-      <Context.Provider value={{ todos, selectedTodo, setSelectedTodo, addTodo, removeTodo, toggleCompleted, addPointModalVisible, setAddPointModalVisible, alertVisible, setAlertVisible, configurationVisible, setConfigurationVisible }}>
+      <Context.Provider value={{ 
+        todos, 
+        selectedTodo, setSelectedTodo, 
+        addTodo, removeTodo, toggleCompleted, editTodo,
+        addPointModalVisible, setAddPointModalVisible, 
+        alertVisible, setAlertVisible, 
+        configurationVisible, setConfigurationVisible 
+      }}>
         {children}
       </Context.Provider>
     </div>

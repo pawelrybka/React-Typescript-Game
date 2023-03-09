@@ -7,15 +7,22 @@ import { motion } from "framer-motion"
 import Backdrop from '../Backdrop/Backdrop'
 
 const AddPointModal = () => {
+
+  const tech = ["HTML", "CSS", "Javascript", "Typescript", "React", "Vue", "Tailwind", "SASS"]
   
-  const { addPointModalVisible, setAddPointModalVisible, addTodo } = useContext(Context);
+  const { 
+    addTodo, editTodo,
+    addPointModalVisible, setAddPointModalVisible,
+    configurationVisible, setConfigurationVisible,
+    selectedTodo, setSelectedTodo 
+  } = useContext(Context);
 
   const [days, setDays] = useState(0);
   const [weeks, setWeeks] = useState(0)
   const [months, setMonths] = useState(0);
   const [years, setYears] = useState(0);
 
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(selectedTodo ? selectedTodo.text : '');
  
   const handleAddTodo = () => {
     if(inputValue === '') return;
@@ -32,7 +39,12 @@ const AddPointModal = () => {
     setAddPointModalVisible(!addPointModalVisible)
   };
 
-  const tech = ["HTML", "CSS", "Javascript", "Typescript", "React", "Vue", "Tailwind", "SASS"]
+  const handleEditTodo = () => {
+    editTodo(inputValue)
+    setAddPointModalVisible(!addPointModalVisible)
+    setConfigurationVisible(!configurationVisible)
+    setSelectedTodo(null)
+  }
 
   const handleDayIncrement = () => {
     setDays((prevDays) => prevDays + 1);
@@ -120,7 +132,7 @@ const AddPointModal = () => {
               </div>
             </div>
           </div>
-          <button className={styles.confirm} onClick={handleAddTodo}>Confirm roadmap point</button>
+          <button className={styles.confirm} onClick={selectedTodo ? handleEditTodo : handleAddTodo}>Confirm roadmap point</button>
         </div>
       </motion.div>
       <Backdrop/>

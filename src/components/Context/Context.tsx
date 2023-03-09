@@ -15,6 +15,7 @@ type TodosContextType = {
   addTodo: (todo: Todo) => void;
   removeTodo: (todo: Todo | null) => void;
   toggleCompleted: (id: number | undefined) => void;
+  editTodo: (props: string) => void;
   
   selectedTodo: Todo | null;
   setSelectedTodo: (todo: Todo | null) => void;
@@ -22,34 +23,37 @@ type TodosContextType = {
   addPointModalVisible: boolean;
   setAddPointModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
   
-  alertVisible: boolean;
-  setAlertVisible: React.Dispatch<React.SetStateAction<boolean>>;
-
   configurationVisible: boolean;
   setConfigurationVisible: React.Dispatch<React.SetStateAction<boolean>>;
+
+  alertVisible: boolean;
+  setAlertVisible: React.Dispatch<React.SetStateAction<boolean>>;
 
 }
 
 const Context = createContext<TodosContextType>({
   todos: [],
-  selectedTodo: null,
-  setSelectedTodo: () => {},
+
   addTodo: () => {},
   removeTodo: () => {},
   toggleCompleted: () => {},
-  
+  editTodo: () => {},
+
+  selectedTodo: null,
+  setSelectedTodo: () => {},
+
   addPointModalVisible: false,
   setAddPointModalVisible: () => {},
   
-  alertVisible: false,
-  setAlertVisible: () => {},
-
   configurationVisible: false,
   setConfigurationVisible: () => {},
 
+  alertVisible: false,
+  setAlertVisible: () => {},
 });
 
 export default Context;
+
 
 
 
