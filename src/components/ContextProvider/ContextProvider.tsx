@@ -8,7 +8,6 @@ type Todo = {
   days: number;
   weeks: number;
   months: number;
-  years: number;
   completed: boolean;
 }
 

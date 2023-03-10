@@ -12,7 +12,10 @@ const AddPointButton = () => {
 
   return (
     <>
-      <button className={styles.addPointButton} onClick={() => setAddPointModalVisible(!addPointModalVisible)}>
+      <button 
+        className={styles.addPointButton} 
+        onClick={() => setAddPointModalVisible(!addPointModalVisible)}
+      >
         <AiOutlinePlusCircle size={40}/>
         <span>Add new point</span>
       </button>
