@@ -20,7 +20,6 @@ const AddPointModal = () => {
   const [days, setDays] = useState(0);
   const [weeks, setWeeks] = useState(0)
   const [months, setMonths] = useState(0);
-  const [years, setYears] = useState(0);
 
   const [inputValue, setInputValue] = useState(selectedTodo ? selectedTodo.text : '');
  
@@ -32,7 +31,6 @@ const AddPointModal = () => {
       days: days, 
       months: months,
       weeks: weeks,
-      years: years,
       completed: false,
     });
     setInputValue("");
@@ -77,16 +75,6 @@ const AddPointModal = () => {
     };
   };
 
-  const handleYearIncrement = () => {
-    setYears((prevYears) => prevYears + 1);
-  };
-
-  const handleYearDecrement = () => {
-    if (years > 0) {
-      setYears((prevYears) => prevYears - 1);
-    };
-  };
-
   return (
     <>
       <motion.div 
@@ -118,7 +106,6 @@ const AddPointModal = () => {
                 {days === 0  
                   && weeks === 0
                   && months === 0
-                  && years === 0
                   && <span>Specify time</span>
                 }
                 
@@ -126,7 +113,6 @@ const AddPointModal = () => {
                   {days > 0 ? <span>{days} days, </span> : null}
                   {weeks > 0 ? <span>{weeks} weeks, </span>: null}  
                   {months > 0 ? <span>{months} months, </span>: null}  
-                  {years > 0 ? <span>{years} years, </span>: null}  
                 </span>     
               </div>
               <div className={styles.timesection__buttons}>
@@ -139,9 +125,6 @@ const AddPointModal = () => {
                 <button onClick={handleMonthDecrement}>-1 Month</button>
                 <div>Months</div>
                 <button onClick={handleMonthIncrement}>+1 Month</button>
-                <button onClick={handleYearDecrement}>-1 Year</button>
-                <div>Years</div>
-                <button onClick={handleYearIncrement}>+1 Year</button>
               </div>
             </div>
           </div>

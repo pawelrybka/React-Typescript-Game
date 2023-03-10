@@ -30,7 +30,6 @@ const Main = () => {
             {todo.days > 0 ? <span>{todo.days} days &nbsp; </span> : null}
             {todo.weeks > 0 ? <span>{todo.weeks} weeks &nbsp; </span>: null}  
             {todo.months > 0 ? <span>{todo.months} months &nbsp; </span>: null}  
-            {todo.years > 0 ? <span>{todo.years} years </span>: null}  
           </div>
           {todo.completed ? <span>Finished</span> : <span>Not Finished</span>}
         </button>

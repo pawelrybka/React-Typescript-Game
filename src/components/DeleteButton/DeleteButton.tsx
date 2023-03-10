@@ -4,6 +4,7 @@ import { BsTrash } from 'react-icons/bs';
 import { useContext } from 'react'
 import Context from '../Context/Context'
 import Alert from '../Alert/Alert';
+import { AnimatePresence } from 'framer-motion'
 
 const DeleteButton = () => {
   
@@ -16,12 +17,12 @@ const DeleteButton = () => {
         onClick={() => setAlertVisible(!alertVisible)}
       >
         <BsTrash size={40}/>
-        Delete your plans
+        <span>Delete your plans</span>
       </button>
-      {alertVisible && <Alert/>}
+      <AnimatePresence>
+        {alertVisible && <Alert/>}
+      </AnimatePresence> 
     </>
-    
-    
   )
 }
 

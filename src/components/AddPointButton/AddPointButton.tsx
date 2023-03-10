@@ -1,6 +1,5 @@
 import React from 'react'
 import AddPointModal from '../AddPointModal/AddPointModal'
-import Backdrop from '../Backdrop/Backdrop'
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import styles from './AddPointButton.module.css'
 import { AnimatePresence } from 'framer-motion'
