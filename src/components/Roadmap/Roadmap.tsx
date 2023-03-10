@@ -26,11 +26,13 @@ const Main = () => {
         >
           {todo.text}
           <span>To complete:</span>
-          <span>{todo.days} days</span>
-          <span>{todo.weeks} weeks</span>
-          <span>{todo.months} months</span>
-          <span>{todo.years} years</span>
-          {todo.completed ? <p>Finished</p> : <p>Not Finished</p>}
+          <div className={styles.point__time}>
+            {todo.days > 0 ? <span>{todo.days} days &nbsp; </span> : null}
+            {todo.weeks > 0 ? <span>{todo.weeks} weeks &nbsp; </span>: null}  
+            {todo.months > 0 ? <span>{todo.months} months &nbsp; </span>: null}  
+            {todo.years > 0 ? <span>{todo.years} years </span>: null}  
+          </div>
+          {todo.completed ? <span>Finished</span> : <span>Not Finished</span>}
         </button>
       ))}
     
@@ -43,3 +45,4 @@ const Main = () => {
 
 export default Main
 
+                  

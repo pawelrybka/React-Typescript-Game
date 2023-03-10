@@ -33,6 +33,12 @@
     transform: scale(110%);
 }
 
+.point__time{
+    display: flex;
+
+}
+
+
 .finished{
     border: 1px solid var(--confirm-green)
 }

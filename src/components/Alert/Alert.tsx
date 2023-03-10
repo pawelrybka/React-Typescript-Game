@@ -28,7 +28,7 @@ const Alert = () => {
   }
 
   return (
-    <div>
+    <>
       <motion.div 
         className={styles.alert}
         initial={{  opacity: 0 }}
@@ -49,7 +49,7 @@ const Alert = () => {
         </div>
       </motion.div>
       <Backdrop/>
-    </div>
+    </>
   )
 }
 

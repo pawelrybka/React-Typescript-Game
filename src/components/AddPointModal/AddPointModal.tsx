@@ -115,7 +115,19 @@ const AddPointModal = () => {
             <div className={styles.timesection}>
               <div className={styles.timesection__header}>
                 <span>Time to complete:</span>
-                <span>{days} days, {weeks} weeks, {months} months, {years} years</span>
+                {days === 0  
+                  && weeks === 0
+                  && months === 0
+                  && years === 0
+                  && <span>Specify time</span>
+                }
+                
+                <span>
+                  {days > 0 ? <span>{days} days, </span> : null}
+                  {weeks > 0 ? <span>{weeks} weeks, </span>: null}  
+                  {months > 0 ? <span>{months} months, </span>: null}  
+                  {years > 0 ? <span>{years} years, </span>: null}  
+                </span>     
               </div>
               <div className={styles.timesection__buttons}>
                 <button onClick={handleDayDecrement}>-1 Day</button>
