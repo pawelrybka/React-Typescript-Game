@@ -85,7 +85,7 @@ const ContextProvider = ({ children }: ListProps) => {
         addTodo, removeTodo, toggleCompleted, editTodo,
         addPointModalVisible, setAddPointModalVisible, 
         alertVisible, setAlertVisible, 
-        configurationVisible, setConfigurationVisible 
+        configurationVisible, setConfigurationVisible,
       }}>
         {children}
       </Context.Provider>

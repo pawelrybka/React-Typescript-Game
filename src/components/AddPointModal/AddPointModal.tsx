@@ -14,12 +14,12 @@ const AddPointModal = () => {
     addTodo, editTodo,
     addPointModalVisible, setAddPointModalVisible,
     configurationVisible, setConfigurationVisible,
-    selectedTodo, setSelectedTodo 
+    selectedTodo, setSelectedTodo
   } = useContext(Context);
 
-  const [days, setDays] = useState(0);
-  const [weeks, setWeeks] = useState(0)
-  const [months, setMonths] = useState(0);
+  const [days, setDays] = useState(selectedTodo ? selectedTodo.days : 0);
+  const [weeks, setWeeks] = useState(selectedTodo ? selectedTodo.weeks : 0)
+  const [months, setMonths] = useState(selectedTodo ? selectedTodo.months : 0);
 
   const [inputValue, setInputValue] = useState(selectedTodo ? selectedTodo.text : '');
  
@@ -108,7 +108,6 @@ const AddPointModal = () => {
                   && months === 0
                   && <span>Specify time</span>
                 }
-                
                 <span>
                   {days > 0 ? <span>{days} days, </span> : null}
                   {weeks > 0 ? <span>{weeks} weeks, </span>: null}  
