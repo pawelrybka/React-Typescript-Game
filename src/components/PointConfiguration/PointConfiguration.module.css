@@ -42,6 +42,7 @@
 
 .midpoints p{
     text-align: center;
+    padding: 1rem;
 }
 
 .configuration{
@@ -54,7 +55,7 @@
 .configuration__edit{
     background-color:var(--dark-blue);
     display: flex;
-    padding: .75rem;
+    padding: 1rem;
     border-radius: 12px;
     transition: .3s ease-in-out;
 }
@@ -78,7 +79,7 @@
     border: none;
     border-radius: 12px;
     width: 50%;
-    padding: .5rem;
+    padding: 1rem;
     cursor: pointer;
     color: var(--text);
 }
@@ -86,6 +87,7 @@
 .configuration__edit p{
     width: 50%;
     text-align: center;
+    padding: 1rem;
 }
 
 .configuration__add{
@@ -117,8 +119,9 @@
 
 .green{
     background-color: var(--confirm-green);
-
 }
+
+
 
 
 

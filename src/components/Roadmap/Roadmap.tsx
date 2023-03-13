@@ -4,13 +4,14 @@ import Context from '../Context/Context'
 import { useContext } from 'react'
 import PointConfiguration from '../PointConfiguration/PointConfiguration'
 import { AnimatePresence } from "framer-motion";
+import { ImArrowDown } from 'react-icons/im';
 
 const Main = () => {
   
   const { todos, setSelectedTodo, configurationVisible, setConfigurationVisible } = useContext(Context);
   
   if (todos.length === 0) {
-    return <div className={styles.roadmap}>Add some points</div>;
+    return <div className={styles.noroadmap}>Add some points <ImArrowDown size={40} className={styles.arrowicon}/></div>;
   }
 
   return (
