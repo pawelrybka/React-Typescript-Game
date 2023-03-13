@@ -16,7 +16,7 @@ type TodosContextType = {
   addTodo: (todo: Todo) => void;
   removeTodo: (todo: Todo | null) => void;
   toggleCompleted: (id: number | undefined) => void;
-  editTodo: (props: string) => void;
+  editTodo: (text: string, days: number, weeks: number, months: number) => void;
   
   selectedTodo: Todo | null;
   setSelectedTodo: (todo: Todo | null) => void;

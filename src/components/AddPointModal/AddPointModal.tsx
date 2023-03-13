@@ -39,7 +39,7 @@ const AddPointModal = () => {
   };
 
   const handleEditTodo = () => {
-    editTodo(inputValue)
+    editTodo(inputValue, days, weeks, months)
     setAddPointModalVisible(!addPointModalVisible)
     setConfigurationVisible(!configurationVisible)
     setSelectedTodo(null)

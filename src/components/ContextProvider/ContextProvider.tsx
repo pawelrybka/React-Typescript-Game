@@ -67,10 +67,15 @@ const ContextProvider = ({ children }: ListProps) => {
     };
   };
 
-  const editTodo = (props: string) => {
+  const editTodo = (text: string, days: number, weeks: number, months: number) => {
     const updatedTodos = todos.map((todo) => {
       if (todo.id === selectedTodo?.id) {
-        return { ...todo, text: props };
+        return { ...todo, 
+          text: text,
+          days: days,
+          weeks: weeks,
+          months: months
+        };
       }
       return todo;
     });
