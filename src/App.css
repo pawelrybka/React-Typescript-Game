@@ -13,6 +13,12 @@
   box-sizing: border-box;
 }
 
+.app{
+  display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
 body {
   font-family: var(--font-family);
   background-color: var(--background-blue);

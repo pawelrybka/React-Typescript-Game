@@ -8,12 +8,14 @@ import ButtonSection from './components/ButtonSection/ButtonSection'
 function App() {
 
   return (
-    <ContextProvider>
-      <Header/>
-      <Roadmap/>
-      <ButtonSection/>
-      <Footer/>
-    </ContextProvider>
+    <div className='app'>
+      <ContextProvider>
+        <Header/>
+        <Roadmap/>
+        <ButtonSection/>
+        <Footer/>
+      </ContextProvider>
+    </div>
   )
 }
 

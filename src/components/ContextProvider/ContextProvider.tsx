@@ -83,7 +83,6 @@ const ContextProvider = ({ children }: ListProps) => {
   }
 
   return (
-    <div className={styles.root}>
       <Context.Provider value={{ 
         todos, setTodos,
         selectedTodo, setSelectedTodo, 
@@ -94,7 +93,6 @@ const ContextProvider = ({ children }: ListProps) => {
       }}>
         {children}
       </Context.Provider>
-    </div>
   );
 };
 
