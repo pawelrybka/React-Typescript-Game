@@ -11,11 +11,8 @@ module.exports = {
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   plugins: ['react-refresh', 'prettier'],
   rules: {
-    'react-refresh/only-export-components': 'warn',
     'react/jsx-filename-extension': 0,
     'react/react-in-jsx-scope': 0,
     'react/button-has-type': 0,
-    'import/no-unresolved': 0,
-    'no-shadow': 0,
   },
 };
