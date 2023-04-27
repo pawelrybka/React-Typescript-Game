@@ -1,0 +1,14 @@
+.main{
+    background-color: green;
+    padding: 5rem 0;
+}
+
+.main__container{
+    background-color: aqua;
+    max-width: 1200px;
+    margin: auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
