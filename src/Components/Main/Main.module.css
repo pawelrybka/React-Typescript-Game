@@ -21,4 +21,6 @@
   border: 1px solid var(--purple);
   gap: 1rem;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }

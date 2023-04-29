@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { toggleAddModal } from '../../Redux/AddModalSlice';
+import { addItem } from '../../Redux/MainSlice';
 import { useDispatch } from 'react-redux';
 import { AiOutlineClose } from 'react-icons/ai';
 import Backdrop from '../../UI/Backdrop/Backdrop';
@@ -66,7 +67,17 @@ function AddModal() {
               </div>
             </div>
           </div>
-          <button className={styles.confirm}>Confirm roadmap point</button>
+          <button
+            className={styles.confirm}
+            onClick={() => {
+              if (inputValue.trim() !== '') {
+                dispatch(addItem({ name: inputValue }));
+                dispatch(toggleAddModal());
+              }
+            }}
+          >
+            Confirm roadmap point
+          </button>
         </div>
       </div>
       <Backdrop />

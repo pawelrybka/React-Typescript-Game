@@ -1,133 +1,20 @@
 import styles from './Main.module.css';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../Redux/store';
+import { ListState } from '../../Redux/MainSlice';
 
 function Main() {
+  const list = useSelector<RootState, ListState>(state => state.list);
+
   return (
     <div className={styles.main}>
       <div className={styles.main__container}>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
-        <div className={styles.article}>
-          <p>Typescript</p>
-          <p>Days to complete: 1day</p>
-        </div>
+        {list.items.map((item, index) => (
+          <div key={index} className={styles.article}>
+            {item.name}
+            <span>Time to finish:</span>
+          </div>
+        ))}
       </div>
     </div>
   );
