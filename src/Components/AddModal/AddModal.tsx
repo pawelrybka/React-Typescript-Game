@@ -1,9 +1,12 @@
 import { useState } from 'react';
+import { toggleAddModal } from '../../Redux/AddModalSlice';
+import { useDispatch } from 'react-redux';
 import { AiOutlineClose } from 'react-icons/ai';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import styles from './AddModal.module.css';
 
 function AddModal() {
+  const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState('');
   const tech = [
     'HTML',
@@ -21,7 +24,7 @@ function AddModal() {
       <div className={styles.addpointmodal}>
         <div className={styles.addpointmodal__header}>
           <h3>Add roadmap point</h3>
-          <button>
+          <button onClick={() => dispatch(toggleAddModal())}>
             <AiOutlineClose size={20} />
           </button>
         </div>
