@@ -1,12 +1,39 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+:root {
+  --purple: #662aed;
+  --dark: #0e1213;
+  --grey: #1a2224;
+  --white: #e3e7e6;
+  --green: #378937;
+}
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.app{
+body {
+  font-family: 'Lato', sans-serif;
+  color: var(--white);
+}
+
+.app {
   display: grid;
   grid-template-rows: 1fr;
   min-height: 100svh;
   margin: auto;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  background-color: var(--grey);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--purple);
+  border: 0;
+  border-radius: 5px;
 }

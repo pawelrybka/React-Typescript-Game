@@ -4,8 +4,8 @@ function Header() {
   return (
     <div className={styles.header}>
       <div className={styles.header__container}>
-        <h1>CodeRoad</h1>
-        <span>Repository</span>
+        <h2>CodeRoad</h2>
+        <a href="https://github.com/pawelrybka/CodeRoad">Repository</a>
       </div>
     </div>
   );
