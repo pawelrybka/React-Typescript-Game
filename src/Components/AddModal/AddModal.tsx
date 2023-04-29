@@ -42,6 +42,7 @@ function AddModal() {
             <div className={styles.buttons}>
               {tech.map(tech => (
                 <input
+                  key={tech}
                   type="button"
                   value={tech}
                   onClick={() => setInputValue(tech)}

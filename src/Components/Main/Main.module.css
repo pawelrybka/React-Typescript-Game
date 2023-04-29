@@ -1,13 +1,24 @@
 .main {
   background-color: var(--dark);
   padding: 5rem 0;
+  display: flex;
+  place-items: center;
 }
 
 .main__container {
-  max-width: 1200px;
-  margin: auto;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  max-width: min(1200px, 100%);
+  padding: 1rem;
+  margin: 0 auto;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  place-items: center;
+  overflow: auto;
+}
+
+.article {
+  padding: 1rem;
+  border: 1px solid var(--purple);
+  gap: 1rem;
+  cursor: pointer;
 }
