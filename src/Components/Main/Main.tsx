@@ -12,7 +12,7 @@ function Main() {
         {list.items.map((item, index) => (
           <div key={index} className={styles.article}>
             {item.name}
-            <span>Time to finish:</span>
+            <span>Time to finish: {item.days}</span>
           </div>
         ))}
       </div>

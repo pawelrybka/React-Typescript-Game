@@ -101,6 +101,7 @@
   padding: 1rem;
   background-color: var(--grey);
   display: flex;
+  justify-content: space-between;
   border-radius: 10px;
 }
 
