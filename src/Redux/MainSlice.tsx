@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface ListState {
-  items: { name: string; days: number }[];
+  items: { name: string; days: number; weeks: number; months: number }[];
 }
 
 const initialState: ListState = {
@@ -12,7 +12,15 @@ export const listSlice = createSlice({
   name: 'list',
   initialState,
   reducers: {
-    addItem: (state, action: PayloadAction<{ name: string; days: number }>) => {
+    addItem: (
+      state,
+      action: PayloadAction<{
+        name: string;
+        days: number;
+        weeks: number;
+        months: number;
+      }>
+    ) => {
       state.items.push(action.payload);
     },
     clearList: state => {

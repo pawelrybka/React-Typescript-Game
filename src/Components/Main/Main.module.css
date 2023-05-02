@@ -19,8 +19,10 @@
 .article {
   padding: 1rem;
   border: 1px solid var(--purple);
-  gap: 1rem;
+  border-radius: 10px;
+  gap: 0.5rem;
   cursor: pointer;
   display: flex;
   flex-direction: column;
+  background-color: var(--grey);
 }

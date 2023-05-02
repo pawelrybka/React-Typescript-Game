@@ -139,7 +139,14 @@ function AddModal() {
             className={styles.confirm}
             onClick={() => {
               if (inputValue.trim() !== '') {
-                dispatch(addItem({ name: inputValue, days: 1 }));
+                dispatch(
+                  addItem({
+                    name: inputValue,
+                    days: days,
+                    weeks: weeks,
+                    months: months,
+                  })
+                );
                 dispatch(toggleAddModal());
               }
             }}
