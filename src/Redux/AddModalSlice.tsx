@@ -3,11 +3,11 @@ import { createSlice } from '@reduxjs/toolkit';
 const addModalSlice = createSlice({
   name: 'addModal',
   initialState: {
-    mounted: false,
+    addModalMounted: false,
   },
   reducers: {
     toggleAddModal: state => {
-      state.mounted = !state.mounted;
+      state.addModalMounted = !state.addModalMounted;
     },
   },
 });

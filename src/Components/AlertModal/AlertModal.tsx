@@ -3,13 +3,9 @@ import { AiOutlineClose } from 'react-icons/ai';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import { useDispatch } from 'react-redux';
 import { clearList } from '../../Redux/MainSlice';
+import { toggleAlertModal } from '../../Redux/AlertSlice';
 
-interface Props {
-  alertVisible: boolean;
-  setAlertVisible: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-function AlertModal({ alertVisible, setAlertVisible }: Props) {
+function AlertModal() {
   const dispatch = useDispatch();
 
   return (
@@ -17,7 +13,7 @@ function AlertModal({ alertVisible, setAlertVisible }: Props) {
       <div className={styles.alert}>
         <div className={styles.alert__header}>
           <h3>Delete roadmap point</h3>
-          <button>
+          <button onClick={() => dispatch(toggleAlertModal())}>
             <AiOutlineClose size={20} />
           </button>
         </div>
@@ -26,15 +22,15 @@ function AlertModal({ alertVisible, setAlertVisible }: Props) {
           <div className={styles.buttonsection}>
             <button
               className={styles.no}
-              onClick={() => setAlertVisible(!alertVisible)}
+              onClick={() => dispatch(toggleAlertModal())}
             >
               No
             </button>
             <button
               className={styles.yes}
               onClick={() => {
-                setAlertVisible(!alertVisible);
                 dispatch(clearList());
+                dispatch(toggleAlertModal());
               }}
             >
               Yes

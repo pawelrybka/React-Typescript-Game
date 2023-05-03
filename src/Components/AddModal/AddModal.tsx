@@ -175,6 +175,7 @@ function AddModal() {
                 dispatch(
                   addItem({
                     name: trimmedInputValue,
+                    finished: false,
                     days: days,
                     weeks: weeks,
                     months: months,

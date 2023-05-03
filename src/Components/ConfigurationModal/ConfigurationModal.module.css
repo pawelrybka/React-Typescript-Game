@@ -1,0 +1,120 @@
+.pointconfiguration {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(90%, 800px, 90vw);
+  max-height: 80vh;
+  border-radius: 20px;
+  z-index: 2;
+  border: 1px solid var(--purple);
+  background-color: var(--dark);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.pointconfiguration__header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: var(--grey);
+  border-radius: 20px 20px 0 0;
+}
+
+.pointconfiguration__header button {
+  padding: 0.5rem;
+  background-color: var(--purple);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  color: var(--white);
+}
+
+.pointconfiguration__content {
+  overflow-y: auto;
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.midpoints p {
+  text-align: center;
+  padding: 1rem;
+}
+
+.configuration {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.configuration__edit {
+  display: flex;
+  border-radius: 12px;
+  transition: 0.3s ease-in-out;
+}
+
+.container {
+  background-color: var(--grey);
+  display: flex;
+  padding: 1rem;
+  border-radius: 10px;
+  justify-content: space-between;
+  width: 100%;
+  transition: ease-in-out 0.3s;
+}
+
+.container p {
+  background-color: transparent;
+}
+
+.configuration__edit button {
+  background-color: var(--purple);
+  border: none;
+  border-radius: 12px;
+  width: 50%;
+  padding: 1rem;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.configuration__edit p {
+  width: 50%;
+  text-align: center;
+  padding: 1rem;
+}
+
+.configuration__add {
+  background-color: var(--green);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  padding: 2rem;
+  color: var(--white);
+}
+
+.configuration__delete {
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 12px;
+  cursor: pointer;
+  padding: 2rem;
+  color: var(--white);
+}
+
+.configuration__close {
+  background-color: var(--purple);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  padding: 2rem;
+  color: var(--white);
+}
+
+.finished {
+  background-color: var(--green);
+}
