@@ -3,11 +3,15 @@ import { toggleAddModal } from '../../Redux/AddModalSlice';
 import { addItem } from '../../Redux/MainSlice';
 import { useDispatch } from 'react-redux';
 import { AiOutlineClose } from 'react-icons/ai';
+import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../Redux/store';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import styles from './AddModal.module.css';
 
 function AddModal() {
   const dispatch = useDispatch();
+  const items = useSelector((state: RootState) => state.list.items);
   const [inputValue, setInputValue] = useState('');
   const [days, setDays] = useState(0);
   const [weeks, setWeeks] = useState(0);
@@ -69,6 +73,32 @@ function AddModal() {
     }
   };
 
+  const notify = () => {
+    toast.success('New point has been added!', {
+      position: 'top-center',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'colored',
+    });
+  };
+
+  const techOnList = () => {
+    toast.error('Tech is already in the list', {
+      position: 'top-center',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'colored',
+    });
+  };
+
   return (
     <>
       <div className={styles.addpointmodal}>
@@ -102,25 +132,27 @@ function AddModal() {
             <div className={styles.timesection}>
               <div className={styles.timesection__header}>
                 <span>Time to complete:</span>
-                <span>
-                  {days > 0 ? (
-                    <span>{days === 1 ? `${days} day` : `${days} days`}</span>
-                  ) : null}
-                </span>
-                <span>
-                  {weeks > 0 ? (
-                    <span>
-                      {weeks === 1 ? `${weeks} week` : `${weeks} weeks`}
-                    </span>
-                  ) : null}
-                </span>
-                <span>
-                  {months > 0 ? (
-                    <span>
-                      {months === 1 ? `${months} month` : `${months} months`}
-                    </span>
-                  ) : null}
-                </span>
+                <div className={styles.time}>
+                  <span>
+                    {days > 0 ? (
+                      <span>{days === 1 ? `${days} day` : `${days} days`}</span>
+                    ) : null}
+                  </span>
+                  <span>
+                    {weeks > 0 ? (
+                      <span>
+                        {weeks === 1 ? `${weeks} week` : `${weeks} weeks`}
+                      </span>
+                    ) : null}
+                  </span>
+                  <span>
+                    {months > 0 ? (
+                      <span>
+                        {months === 1 ? `${months} month` : `${months} months`}
+                      </span>
+                    ) : null}
+                  </span>
+                </div>
               </div>
               <div className={styles.timesection__buttons}>
                 <button onClick={() => subtractDay()}>-1 Day</button>
@@ -138,16 +170,20 @@ function AddModal() {
           <button
             className={styles.confirm}
             onClick={() => {
-              if (inputValue.trim() !== '') {
+              const trimmedInputValue = inputValue.trim();
+              if (!items.some(item => item.name === trimmedInputValue)) {
                 dispatch(
                   addItem({
-                    name: inputValue,
+                    name: trimmedInputValue,
                     days: days,
                     weeks: weeks,
                     months: months,
                   })
                 );
                 dispatch(toggleAddModal());
+                notify();
+              } else {
+                techOnList();
               }
             }}
           >

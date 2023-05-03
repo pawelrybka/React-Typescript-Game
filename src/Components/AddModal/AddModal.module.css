@@ -105,6 +105,11 @@
   border-radius: 10px;
 }
 
+.time {
+  display: flex;
+  gap: 1rem;
+}
+
 .timesection__buttons {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
