@@ -1,24 +1,35 @@
 import { useState } from 'react';
+import { ListItem } from '../../Redux/MainSlice';
+import { editItem } from '../../Redux/MainSlice';
+import { useDispatch } from 'react-redux';
 import { AiOutlineClose } from 'react-icons/ai';
-import { RootState } from '../../Redux/store';
-import { useSelector } from 'react-redux';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import styles from './ConfigurationModal.module.css';
 
 interface Props {
+  selectedItem: ListItem | null;
   configuratinVisible: boolean;
   setConfigurationVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function ConfigurationModal({
+  selectedItem,
   configuratinVisible,
   setConfigurationVisible,
 }: Props) {
-  const [finished, setFinished] = useState(false);
+  const dispatch = useDispatch();
 
-  const selectedItem = useSelector(
-    (state: RootState) => state.list.selectedItem
-  );
+  const [finished, setFinished] = useState(selectedItem?.finished || false);
+
+  function handleCompleteItem() {
+    if (selectedItem) {
+      const updatedItem = { ...selectedItem, finished: !finished };
+      dispatch(editItem(updatedItem));
+      setFinished(!finished);
+    }
+  }
+
+  console.log(selectedItem);
 
   return (
     <>
@@ -44,15 +55,9 @@ function ConfigurationModal({
             </div>
 
             <div className={styles.configuration__edit}>
-              <div
-                className={`${styles.container} ${
-                  finished ? styles.finished : ''
-                }`}
-              >
+              <div className={styles.container}>
                 <p>Finished</p>
-                <button onClick={() => setFinished(!finished)}>
-                  Marked as finished
-                </button>
+                <button onClick={handleCompleteItem}>Marked as finished</button>
               </div>
             </div>
 

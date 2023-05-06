@@ -1,15 +1,17 @@
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../Redux/store';
 import { ListState } from '../../Redux/MainSlice';
-import { setSelectedItem } from '../../Redux/MainSlice';
+import { ListItem } from '../../Redux/MainSlice';
 import ConfigurationModal from '../ConfigurationModal/ConfigurationModal';
 import styles from './Main.module.css';
 
 function Main() {
-  const dispatch = useDispatch();
   const list = useSelector<RootState, ListState>(state => state.list);
   const [configuratinVisible, setConfigurationVisible] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<ListItem | null>(null);
+
+  console.log(selectedItem);
 
   return (
     <>
@@ -20,7 +22,7 @@ function Main() {
               key={index}
               className={styles.article}
               onClick={() => {
-                dispatch(setSelectedItem(item));
+                setSelectedItem(item);
                 setConfigurationVisible(!configuratinVisible);
               }}
             >
@@ -51,6 +53,7 @@ function Main() {
       </div>
       {configuratinVisible && (
         <ConfigurationModal
+          selectedItem={selectedItem}
           configuratinVisible={configuratinVisible}
           setConfigurationVisible={setConfigurationVisible}
         />

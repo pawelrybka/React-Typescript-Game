@@ -174,6 +174,7 @@ function AddModal() {
               if (!items.some(item => item.name === trimmedInputValue)) {
                 dispatch(
                   addItem({
+                    id: Date.now(),
                     name: trimmedInputValue,
                     finished: false,
                     days: days,
