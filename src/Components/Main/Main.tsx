@@ -11,8 +11,6 @@ function Main() {
   const [configuratinVisible, setConfigurationVisible] = useState(false);
   const [selectedItem, setSelectedItem] = useState<ListItem | null>(null);
 
-  console.log(selectedItem);
-
   return (
     <>
       <div className={styles.main}>
@@ -27,6 +25,7 @@ function Main() {
               }}
             >
               <span>{item.name}</span>
+              <span>{item.finished ? 'Finished' : 'Not finished'}</span>
               <span>Time to finish:</span>
               {item.days === 0 ? null : (
                 <span>

@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { ListItem } from '../../Redux/MainSlice';
-import { editItem } from '../../Redux/MainSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { ListItem, editItem } from '../../Redux/MainSlice';
+import { toggleAlertModal } from '../../Redux/AlertSlice';
+import { RootState } from '../../Redux/store';
 import { AiOutlineClose } from 'react-icons/ai';
+import AlertModal from '../AlertModal/AlertModal';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import styles from './ConfigurationModal.module.css';
 
@@ -18,7 +20,9 @@ function ConfigurationModal({
   setConfigurationVisible,
 }: Props) {
   const dispatch = useDispatch();
-
+  const { alertModalMounted } = useSelector(
+    (state: RootState) => state.alertModal
+  );
   const [finished, setFinished] = useState(selectedItem?.finished || false);
 
   function handleCompleteItem() {
@@ -28,8 +32,6 @@ function ConfigurationModal({
       setFinished(!finished);
     }
   }
-
-  console.log(selectedItem);
 
   return (
     <>
@@ -49,19 +51,26 @@ function ConfigurationModal({
           <div className={styles.configuration}>
             <div className={styles.configuration__edit}>
               <div className={styles.container}>
-                <p>Title:</p>
+                <p>Title</p>
                 <button>Edit name and time</button>
               </div>
             </div>
 
             <div className={styles.configuration__edit}>
-              <div className={styles.container}>
-                <p>Finished</p>
+              <div
+                className={`${styles.container} ${
+                  finished ? styles.finished : ''
+                }`}
+              >
+                <p>{finished ? 'Finished' : 'Not Finished'}</p>
                 <button onClick={handleCompleteItem}>Marked as finished</button>
               </div>
             </div>
 
-            <button className={styles.configuration__delete}>
+            <button
+              onClick={() => dispatch(toggleAlertModal())}
+              className={styles.configuration__delete}
+            >
               Delete roadmap point
             </button>
             <button
@@ -74,6 +83,7 @@ function ConfigurationModal({
         </div>
       </div>
       <Backdrop />
+      {alertModalMounted && <AlertModal />}
     </>
   );
 }

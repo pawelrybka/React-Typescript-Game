@@ -114,3 +114,7 @@
   padding: 2rem;
   color: var(--white);
 }
+
+.finished {
+  background-color: var(--green);
+}
