@@ -1,27 +1,21 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ListItem, editItem } from '../../Redux/MainSlice';
+import { editItem, setSelectedItem } from '../../Redux/MainSlice';
 import { toggleAlertModal } from '../../Redux/AlertSlice';
+import { toggleConfigurationModal } from '../../Redux/ConfigurationModalSlice';
 import { RootState } from '../../Redux/store';
 import { AiOutlineClose } from 'react-icons/ai';
 import AlertModal from '../AlertModal/AlertModal';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import styles from './ConfigurationModal.module.css';
 
-interface Props {
-  selectedItem: ListItem | null;
-  configuratinVisible: boolean;
-  setConfigurationVisible: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-function ConfigurationModal({
-  selectedItem,
-  configuratinVisible,
-  setConfigurationVisible,
-}: Props) {
+function ConfigurationModal() {
   const dispatch = useDispatch();
   const { alertModalMounted } = useSelector(
     (state: RootState) => state.alertModal
+  );
+  const selectedItem = useSelector(
+    (state: RootState) => state.list.selectedItem
   );
   const [finished, setFinished] = useState(selectedItem?.finished || false);
 
@@ -38,7 +32,13 @@ function ConfigurationModal({
       <div className={styles.pointconfiguration}>
         <div className={styles.pointconfiguration__header}>
           <h2>{selectedItem?.name}</h2>
-          <button onClick={() => setConfigurationVisible(!configuratinVisible)}>
+          <button
+            className={styles.configuration__close}
+            onClick={() => {
+              dispatch(setSelectedItem(null));
+              dispatch(toggleConfigurationModal());
+            }}
+          >
             <AiOutlineClose size={20} />
           </button>
         </div>
@@ -75,7 +75,10 @@ function ConfigurationModal({
             </button>
             <button
               className={styles.configuration__close}
-              onClick={() => setConfigurationVisible(!configuratinVisible)}
+              onClick={() => {
+                dispatch(setSelectedItem(null));
+                dispatch(toggleConfigurationModal());
+              }}
             >
               Close
             </button>

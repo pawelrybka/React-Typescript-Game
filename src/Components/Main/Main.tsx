@@ -1,27 +1,30 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../Redux/store';
-import { ListState } from '../../Redux/MainSlice';
-import { ListItem } from '../../Redux/MainSlice';
+import { setSelectedItem } from '../../Redux/MainSlice';
+import { toggleConfigurationModal } from '../../Redux/ConfigurationModalSlice';
 import ConfigurationModal from '../ConfigurationModal/ConfigurationModal';
 import styles from './Main.module.css';
 
 function Main() {
-  const list = useSelector<RootState, ListState>(state => state.list);
-  const [configuratinVisible, setConfigurationVisible] = useState(false);
-  const [selectedItem, setSelectedItem] = useState<ListItem | null>(null);
+  const dispatch = useDispatch();
+  const items = useSelector((state: RootState) => state.list.items);
+  const { configurationModalMounted } = useSelector(
+    (state: RootState) => state.configurationModal
+  );
 
   return (
     <>
       <div className={styles.main}>
         <div className={styles.main__container}>
-          {list.items.map((item, index) => (
+          {items.map(item => (
             <div
-              key={index}
-              className={styles.article}
+              key={item.id}
+              className={`${styles.article} ${
+                item.finished ? styles.finished : ''
+              }`}
               onClick={() => {
-                setSelectedItem(item);
-                setConfigurationVisible(!configuratinVisible);
+                dispatch(setSelectedItem(item));
+                dispatch(toggleConfigurationModal());
               }}
             >
               <span>{item.name}</span>
@@ -50,13 +53,7 @@ function Main() {
           ))}
         </div>
       </div>
-      {configuratinVisible && (
-        <ConfigurationModal
-          selectedItem={selectedItem}
-          configuratinVisible={configuratinVisible}
-          setConfigurationVisible={setConfigurationVisible}
-        />
-      )}
+      {configurationModalMounted && <ConfigurationModal />}
     </>
   );
 }

@@ -8,3 +8,7 @@
   -webkit-backdrop-filter: blur(10px);
   z-index: 1;
 }
+
+.zindexup {
+  z-index: 3;
+}

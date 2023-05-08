@@ -1,12 +1,17 @@
-import styles from './AlertModal.module.css';
-import { AiOutlineClose } from 'react-icons/ai';
-import Backdrop from '../../UI/Backdrop/Backdrop';
-import { useDispatch } from 'react-redux';
-import { clearList } from '../../Redux/MainSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../Redux/store';
+import { clearList, removeItem } from '../../Redux/MainSlice';
 import { toggleAlertModal } from '../../Redux/AlertSlice';
+import { AiOutlineClose } from 'react-icons/ai';
+import { toggleConfigurationModal } from '../../Redux/ConfigurationModalSlice';
+import Backdrop from '../../UI/Backdrop/Backdrop';
+import styles from './AlertModal.module.css';
 
 function AlertModal() {
   const dispatch = useDispatch();
+  const selectedItem = useSelector(
+    (state: RootState) => state.list.selectedItem
+  );
 
   return (
     <>
@@ -29,8 +34,9 @@ function AlertModal() {
             <button
               className={styles.yes}
               onClick={() => {
-                dispatch(clearList());
+                dispatch(selectedItem ? removeItem(selectedItem) : clearList());
                 dispatch(toggleAlertModal());
+                dispatch(toggleConfigurationModal());
               }}
             >
               Yes

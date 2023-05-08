@@ -4,9 +4,9 @@ export interface ListItem {
   id: number;
   name: string;
   finished: boolean;
-  days: number;
-  weeks: number;
-  months: number;
+  days?: number;
+  weeks?: number;
+  months?: number;
 }
 
 export interface ListState {
@@ -26,8 +26,8 @@ export const listSlice = createSlice({
     addItem: (state, action: PayloadAction<ListItem>) => {
       state.items.push(action.payload);
     },
-    removeItem: (state, action: PayloadAction<number>) => {
-      state.items = state.items.filter(item => item.id !== action.payload);
+    removeItem: (state, action: PayloadAction<ListItem>) => {
+      state.items = state.items.filter(item => item.id !== action.payload.id);
     },
     editItem: (state, action: PayloadAction<ListItem>) => {
       const index = state.items.findIndex(
@@ -37,11 +37,16 @@ export const listSlice = createSlice({
         state.items[index] = action.payload;
       }
     },
+    setSelectedItem: (state, action: PayloadAction<ListItem | null>) => {
+      state.selectedItem = action.payload;
+    },
     clearList: state => {
       state.items = [];
+      state.selectedItem = null;
     },
   },
 });
 
-export const { addItem, removeItem, editItem, clearList } = listSlice.actions;
+export const { addItem, removeItem, editItem, clearList, setSelectedItem } =
+  listSlice.actions;
 export default listSlice.reducer;

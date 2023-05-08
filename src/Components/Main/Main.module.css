@@ -26,3 +26,7 @@
   flex-direction: column;
   background-color: var(--grey);
 }
+
+.finished {
+  border: 1px solid var(--green);
+}
