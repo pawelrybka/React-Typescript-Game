@@ -10,10 +10,14 @@ function Backdrop() {
     (state: RootState) => state.alertModal
   );
 
+  const { addModalMounted } = useSelector((state: RootState) => state.addModal);
+
   return (
     <div
       className={`${styles.backdrop} ${
-        configurationModalMounted && alertModalMounted ? styles.zindexup : ''
+        addModalMounted || (configurationModalMounted && alertModalMounted)
+          ? styles.zindexup
+          : ''
       }`}
     ></div>
   );

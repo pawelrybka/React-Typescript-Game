@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { editItem, setSelectedItem } from '../../Redux/MainSlice';
+import { toggleAddModal } from '../../Redux/AddModalSlice';
 import { toggleAlertModal } from '../../Redux/AlertSlice';
 import { toggleConfigurationModal } from '../../Redux/ConfigurationModalSlice';
 import { RootState } from '../../Redux/store';
 import { AiOutlineClose } from 'react-icons/ai';
+import AddModal from '../AddModal/AddModal';
 import AlertModal from '../AlertModal/AlertModal';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import styles from './ConfigurationModal.module.css';
@@ -17,6 +19,8 @@ function ConfigurationModal() {
   const selectedItem = useSelector(
     (state: RootState) => state.list.selectedItem
   );
+  const { addModalMounted } = useSelector((state: RootState) => state.addModal);
+
   const [finished, setFinished] = useState(selectedItem?.finished || false);
 
   function handleCompleteItem() {
@@ -52,7 +56,9 @@ function ConfigurationModal() {
             <div className={styles.configuration__edit}>
               <div className={styles.container}>
                 <p>Title</p>
-                <button>Edit name and time</button>
+                <button onClick={() => dispatch(toggleAddModal())}>
+                  Edit name and time
+                </button>
               </div>
             </div>
 
@@ -87,6 +93,7 @@ function ConfigurationModal() {
       </div>
       <Backdrop />
       {alertModalMounted && <AlertModal />}
+      {addModalMounted && <AddModal />}
     </>
   );
 }

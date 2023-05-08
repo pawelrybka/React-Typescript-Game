@@ -6,12 +6,11 @@
   width: min(90%, 800px, 90vw);
   max-height: 80vh;
   border-radius: 20px;
-  z-index: 2;
   border: 1px solid var(--purple);
   background-color: var(--dark);
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
+  z-index: 2;
 }
 
 .pointconfiguration__header {

@@ -9,7 +9,7 @@
   border: 1px solid var(--purple);
   display: flex;
   flex-direction: column;
-  z-index: 2;
+  z-index: 4;
 }
 
 .addpointmodal__header {
