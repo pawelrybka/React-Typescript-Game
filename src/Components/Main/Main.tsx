@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../Redux/store';
 import { setSelectedItem } from '../../Redux/MainSlice';
 import { toggleConfigurationModal } from '../../Redux/ConfigurationModalSlice';
+import { AnimatePresence } from 'framer-motion';
 import ConfigurationModal from '../ConfigurationModal/ConfigurationModal';
 import styles from './Main.module.css';
 
@@ -53,7 +54,9 @@ function Main() {
           ))}
         </div>
       </div>
-      {configurationModalMounted && <ConfigurationModal />}
+      <AnimatePresence>
+        {configurationModalMounted && <ConfigurationModal />}
+      </AnimatePresence>
     </>
   );
 }

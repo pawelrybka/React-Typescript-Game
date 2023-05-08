@@ -4,6 +4,7 @@ import { toggleAddModal } from '../../Redux/AddModalSlice';
 import { toggleAlertModal } from '../../Redux/AlertSlice';
 import { IoMdAdd } from 'react-icons/io';
 import { BsTrash3 } from 'react-icons/bs';
+import { AnimatePresence } from 'framer-motion';
 import AddModal from '../AddModal/AddModal';
 import AlertModal from '../AlertModal/AlertModal';
 import styles from './Footer.module.css';
@@ -33,8 +34,10 @@ function Footer() {
           ) : null}
         </div>
       </div>
-      {addModalMounted && <AddModal />}
-      {alertModalMounted && <AlertModal />}
+      <AnimatePresence>
+        {addModalMounted && <AddModal />}
+        {alertModalMounted && <AlertModal />}
+      </AnimatePresence>
     </>
   );
 }

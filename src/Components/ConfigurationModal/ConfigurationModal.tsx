@@ -4,8 +4,10 @@ import { editItem, setSelectedItem } from '../../Redux/MainSlice';
 import { toggleAddModal } from '../../Redux/AddModalSlice';
 import { toggleAlertModal } from '../../Redux/AlertSlice';
 import { toggleConfigurationModal } from '../../Redux/ConfigurationModalSlice';
+import { motion } from 'framer-motion';
 import { RootState } from '../../Redux/store';
 import { AiOutlineClose } from 'react-icons/ai';
+
 import AddModal from '../AddModal/AddModal';
 import AlertModal from '../AlertModal/AlertModal';
 import Backdrop from '../../UI/Backdrop/Backdrop';
@@ -33,7 +35,13 @@ function ConfigurationModal() {
 
   return (
     <>
-      <div className={styles.pointconfiguration}>
+      <motion.div
+        className={styles.pointconfiguration}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+      >
         <div className={styles.pointconfiguration__header}>
           <h2>{selectedItem?.name}</h2>
           <button
@@ -90,7 +98,7 @@ function ConfigurationModal() {
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
       <Backdrop />
       {alertModalMounted && <AlertModal />}
       {addModalMounted && <AddModal />}

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AiOutlineClose } from 'react-icons/ai';
 import { toast } from 'react-toastify';
 import { RootState } from '../../Redux/store';
+import { motion } from 'framer-motion';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import styles from './AddModal.module.css';
 
@@ -110,7 +111,13 @@ function AddModal() {
 
   return (
     <>
-      <div className={styles.addpointmodal}>
+      <motion.div
+        className={styles.addpointmodal}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+      >
         <div className={styles.addpointmodal__header}>
           <h3>Add roadmap point</h3>
           <button onClick={() => dispatch(toggleAddModal())}>
@@ -214,7 +221,7 @@ function AddModal() {
             Confirm roadmap point
           </button>
         </div>
-      </div>
+      </motion.div>
       <Backdrop />
     </>
   );

@@ -4,6 +4,7 @@ import { clearList, removeItem, setSelectedItem } from '../../Redux/MainSlice';
 import { toggleAlertModal } from '../../Redux/AlertSlice';
 import { AiOutlineClose } from 'react-icons/ai';
 import { toggleConfigurationModal } from '../../Redux/ConfigurationModalSlice';
+import { motion } from 'framer-motion';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import styles from './AlertModal.module.css';
 
@@ -15,7 +16,13 @@ function AlertModal() {
 
   return (
     <>
-      <div className={styles.alert}>
+      <motion.div
+        className={styles.alert}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+      >
         <div className={styles.alert__header}>
           <h3>Delete roadmap point</h3>
           <button onClick={() => dispatch(toggleAlertModal())}>
@@ -46,7 +53,7 @@ function AlertModal() {
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
       <Backdrop />
     </>
   );
