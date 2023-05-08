@@ -34,9 +34,11 @@ function AlertModal() {
             <button
               className={styles.yes}
               onClick={() => {
-                dispatch(selectedItem ? removeItem(selectedItem) : clearList());
-                dispatch(toggleAlertModal());
-                dispatch(toggleConfigurationModal());
+                selectedItem
+                  ? (dispatch(removeItem(selectedItem)),
+                    dispatch(toggleAlertModal()),
+                    dispatch(toggleConfigurationModal()))
+                  : (dispatch(clearList()), dispatch(toggleAlertModal()));
               }}
             >
               Yes
