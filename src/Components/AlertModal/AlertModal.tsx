@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../Redux/store';
-import { clearList, removeItem } from '../../Redux/MainSlice';
+import { clearList, removeItem, setSelectedItem } from '../../Redux/MainSlice';
 import { toggleAlertModal } from '../../Redux/AlertSlice';
 import { AiOutlineClose } from 'react-icons/ai';
 import { toggleConfigurationModal } from '../../Redux/ConfigurationModalSlice';
@@ -36,6 +36,7 @@ function AlertModal() {
               onClick={() => {
                 selectedItem
                   ? (dispatch(removeItem(selectedItem)),
+                    dispatch(setSelectedItem(null)),
                     dispatch(toggleAlertModal()),
                     dispatch(toggleConfigurationModal()))
                   : (dispatch(clearList()), dispatch(toggleAlertModal()));
