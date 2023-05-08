@@ -1,21 +1,30 @@
 import { useState } from 'react';
 import { toggleAddModal } from '../../Redux/AddModalSlice';
-import { addItem } from '../../Redux/MainSlice';
-import { useDispatch } from 'react-redux';
+import { addItem, editItem } from '../../Redux/MainSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import { AiOutlineClose } from 'react-icons/ai';
 import { toast } from 'react-toastify';
-import { useSelector } from 'react-redux';
 import { RootState } from '../../Redux/store';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import styles from './AddModal.module.css';
 
 function AddModal() {
   const dispatch = useDispatch();
+  const selectedItem = useSelector(
+    (state: RootState) => state.list.selectedItem
+  );
   const items = useSelector((state: RootState) => state.list.items);
-  const [inputValue, setInputValue] = useState('');
-  const [days, setDays] = useState(0);
-  const [weeks, setWeeks] = useState(0);
-  const [months, setMonths] = useState(0);
+  const [inputValue, setInputValue] = useState(
+    selectedItem ? selectedItem.name : ''
+  );
+  const [days, setDays] = useState(selectedItem ? selectedItem.days || 0 : 0);
+
+  const [weeks, setWeeks] = useState(
+    selectedItem ? selectedItem.weeks || 0 : 0
+  );
+  const [months, setMonths] = useState(
+    selectedItem ? selectedItem.months || 0 : 0
+  );
 
   const tech = [
     'HTML',
@@ -134,7 +143,7 @@ function AddModal() {
                 <span>Time to complete:</span>
                 <div className={styles.time}>
                   <span>
-                    {days > 0 ? (
+                    {days && days > 0 ? (
                       <span>{days === 1 ? `${days} day` : `${days} days`}</span>
                     ) : null}
                   </span>
@@ -171,21 +180,34 @@ function AddModal() {
             className={styles.confirm}
             onClick={() => {
               const trimmedInputValue = inputValue.trim();
-              if (!items.some(item => item.name === trimmedInputValue)) {
+              if (!selectedItem) {
+                if (!items.some(item => item.name === trimmedInputValue)) {
+                  dispatch(
+                    addItem({
+                      id: Date.now(),
+                      name: trimmedInputValue,
+                      finished: false,
+                      days: days,
+                      weeks: weeks,
+                      months: months,
+                    })
+                  );
+                  dispatch(toggleAddModal());
+                  notify();
+                } else {
+                  techOnList();
+                }
+              } else {
                 dispatch(
-                  addItem({
-                    id: Date.now(),
+                  editItem({
+                    ...selectedItem,
                     name: trimmedInputValue,
-                    finished: false,
                     days: days,
                     weeks: weeks,
                     months: months,
                   })
                 );
                 dispatch(toggleAddModal());
-                notify();
-              } else {
-                techOnList();
               }
             }}
           >
