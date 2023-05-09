@@ -25,6 +25,7 @@
   justify-content: center;
   gap: 0.5rem;
   font-family: 'Lato', sans-serif;
+
   cursor: pointer;
   background-color: var(--purple);
   color: var(--white);

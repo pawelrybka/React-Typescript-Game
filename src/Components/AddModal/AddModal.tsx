@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { toggleAddModal } from '../../Redux/AddModalSlice';
+import { toggleConfigurationModal } from '../../Redux/ConfigurationModalSlice';
 import { addItem, editItem } from '../../Redux/MainSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { AiOutlineClose } from 'react-icons/ai';
@@ -18,13 +19,14 @@ function AddModal() {
   const [inputValue, setInputValue] = useState(
     selectedItem ? selectedItem.name : ''
   );
-  const [days, setDays] = useState(selectedItem ? selectedItem.days || 0 : 0);
-
-  const [weeks, setWeeks] = useState(
-    selectedItem ? selectedItem.weeks || 0 : 0
+  const [days, setDays] = useState(
+    selectedItem ? selectedItem.days : new Date().getDate()
   );
   const [months, setMonths] = useState(
-    selectedItem ? selectedItem.months || 0 : 0
+    selectedItem ? selectedItem.months : new Date().getMonth() + 1
+  );
+  const [years, setYears] = useState(
+    selectedItem ? selectedItem.years : new Date().getFullYear()
   );
 
   const tech = [
@@ -38,50 +40,49 @@ function AddModal() {
     'SASS',
   ];
 
-  const addDay = () => {
-    if (days < 6) {
+  function addDay() {
+    if (days < 31) {
       setDays(days + 1);
-    } else {
-      setDays(0);
-      setWeeks(weeks + 1);
     }
-  };
+    if (days === 31) {
+      setDays(1);
+    }
+  }
 
-  const subtractDay = () => {
-    if (days > 0) {
+  function subtractDay() {
+    if (days > 1) {
       setDays(days - 1);
     } else {
-      if (weeks > 0) {
-        setDays(6);
-        setWeeks(weeks - 1);
-      }
+      setDays(31);
     }
-  };
+  }
 
-  const addWeek = () => {
-    setWeeks(weeks + 1);
-  };
-
-  const subtractWeek = () => {
-    if (weeks > 0) {
-      setWeeks(weeks - 1);
-    } else {
-      if (months > 0) {
-        setWeeks(3);
-        setMonths(months - 1);
-      }
+  function addMonth() {
+    if (months < 12) {
+      setMonths(months + 1);
     }
-  };
+    if (months === 12) {
+      setMonths(1);
+    }
+  }
 
-  const addMonth = () => {
-    setMonths(months + 1);
-  };
-
-  const subtractMonth = () => {
-    if (months > 0) {
+  function subtractMonth() {
+    if (months > 1) {
       setMonths(months - 1);
+    } else {
+      setMonths(12);
     }
-  };
+  }
+
+  function addYear() {
+    setYears(years + 1);
+  }
+
+  function subtractYear() {
+    if (years > 2023) {
+      setYears(years - 1);
+    }
+  }
 
   const notify = () => {
     toast.success('New point has been added!', {
@@ -119,7 +120,11 @@ function AddModal() {
         transition={{ duration: 0.3 }}
       >
         <div className={styles.addpointmodal__header}>
-          <h3>Add roadmap point</h3>
+          {selectedItem === null ? (
+            <h3>Add roadmap point</h3>
+          ) : (
+            <h3>{selectedItem.name}</h3>
+          )}
           <button onClick={() => dispatch(toggleAddModal())}>
             <AiOutlineClose size={20} />
           </button>
@@ -147,26 +152,11 @@ function AddModal() {
             </div>
             <div className={styles.timesection}>
               <div className={styles.timesection__header}>
-                <span>Time to complete:</span>
+                <span>Deadline:</span>
                 <div className={styles.time}>
                   <span>
-                    {days && days > 0 ? (
-                      <span>{days === 1 ? `${days} day` : `${days} days`}</span>
-                    ) : null}
-                  </span>
-                  <span>
-                    {weeks > 0 ? (
-                      <span>
-                        {weeks === 1 ? `${weeks} week` : `${weeks} weeks`}
-                      </span>
-                    ) : null}
-                  </span>
-                  <span>
-                    {months > 0 ? (
-                      <span>
-                        {months === 1 ? `${months} month` : `${months} months`}
-                      </span>
-                    ) : null}
+                    {days < 10 ? `0${days}` : days} /{' '}
+                    {months < 10 ? `0${months}` : months} / {years}
                   </span>
                 </div>
               </div>
@@ -174,12 +164,12 @@ function AddModal() {
                 <button onClick={() => subtractDay()}>-1 Day</button>
                 <div>Days</div>
                 <button onClick={() => addDay()}>+1 Day</button>
-                <button onClick={() => subtractWeek()}>-1 Week</button>
-                <div>Weeks</div>
-                <button onClick={() => addWeek()}>+1 Week</button>
                 <button onClick={() => subtractMonth()}>-1 Month</button>
-                <div>Months</div>
+                <div>Weeks</div>
                 <button onClick={() => addMonth()}>+1 Month</button>
+                <button onClick={() => subtractYear()}>-1 Year</button>
+                <div>Months</div>
+                <button onClick={() => addYear()}>+1 Year</button>
               </div>
             </div>
           </div>
@@ -187,38 +177,45 @@ function AddModal() {
             className={styles.confirm}
             onClick={() => {
               const trimmedInputValue = inputValue.trim();
-              if (!selectedItem) {
-                if (!items.some(item => item.name === trimmedInputValue)) {
+              if (trimmedInputValue !== '') {
+                if (!selectedItem) {
+                  if (!items.some(item => item.name === trimmedInputValue)) {
+                    dispatch(
+                      addItem({
+                        id: Date.now(),
+                        name: trimmedInputValue,
+                        finished: false,
+                        days: days,
+                        months: months,
+                        years: years,
+                      })
+                    );
+                    dispatch(toggleAddModal());
+                    notify();
+                  } else {
+                    techOnList();
+                  }
+                } else {
                   dispatch(
-                    addItem({
-                      id: Date.now(),
+                    editItem({
+                      ...selectedItem,
                       name: trimmedInputValue,
-                      finished: false,
                       days: days,
-                      weeks: weeks,
                       months: months,
+                      years: years,
                     })
                   );
                   dispatch(toggleAddModal());
-                  notify();
-                } else {
-                  techOnList();
+                  dispatch(toggleConfigurationModal());
                 }
-              } else {
-                dispatch(
-                  editItem({
-                    ...selectedItem,
-                    name: trimmedInputValue,
-                    days: days,
-                    weeks: weeks,
-                    months: months,
-                  })
-                );
-                dispatch(toggleAddModal());
               }
             }}
           >
-            Confirm roadmap point
+            {selectedItem === null ? (
+              <span>Add roadmap point</span>
+            ) : (
+              <span>Edit roadmap point</span>
+            )}
           </button>
         </div>
       </motion.div>

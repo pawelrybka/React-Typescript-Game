@@ -4,9 +4,9 @@ export interface ListItem {
   id: number;
   name: string;
   finished: boolean;
-  days?: number;
-  weeks?: number;
-  months?: number;
+  days: number;
+  months: number;
+  years: number;
 }
 
 export interface ListState {
