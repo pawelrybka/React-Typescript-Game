@@ -35,3 +35,8 @@
 .deadline_finished {
   text-decoration: line-through;
 }
+
+.welcome__description {
+  text-align: center;
+  max-width: 600px;
+}

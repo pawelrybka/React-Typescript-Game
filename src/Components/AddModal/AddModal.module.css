@@ -88,6 +88,9 @@
   background-color: var(--purple);
   cursor: pointer;
   color: var(--text);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .timesection {

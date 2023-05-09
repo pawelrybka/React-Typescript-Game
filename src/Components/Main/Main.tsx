@@ -17,29 +17,40 @@ function Main() {
     <>
       <div className={styles.main}>
         <div className={styles.main__container}>
-          {items.map(item => (
-            <div
-              key={item.id}
-              className={`${styles.article} ${
-                item.finished ? styles.finished : ''
-              }`}
-              onClick={() => {
-                dispatch(setSelectedItem(item));
-                dispatch(toggleConfigurationModal());
-              }}
-            >
-              <span>{item.name}</span>
-              <span>{item.finished ? 'Finished' : 'Not finished'}</span>
-              <span>Deadline:</span>
-              <span
-                className={`${item.finished ? styles.deadline_finished : ''}`}
-              >
-                {item.days < 10 ? `0${item.days}` : item.days}/
-                {item.months < 10 ? `0${item.months}` : item.months}/
-                {item.years}
-              </span>
+          {items.length === 0 ? (
+            <div className={styles.welcome__description}>
+              <h1>Welcome to Coderoad!</h1>
+              <p>
+                The application was created to facilitate planning the process
+                of learning programming, to add a new point to your list, click
+                the button below
+              </p>
             </div>
-          ))}
+          ) : (
+            items.map(item => (
+              <div
+                key={item.id}
+                className={`${styles.article} ${
+                  item.finished ? styles.finished : ''
+                }`}
+                onClick={() => {
+                  dispatch(setSelectedItem(item));
+                  dispatch(toggleConfigurationModal());
+                }}
+              >
+                <span>{item.name}</span>
+                <span>{item.finished ? 'Finished' : 'Not finished'}</span>
+                <span>Deadline:</span>
+                <span
+                  className={`${item.finished ? styles.deadline_finished : ''}`}
+                >
+                  {item.days < 10 ? `0${item.days}` : item.days}/
+                  {item.months < 10 ? `0${item.months}` : item.months}/
+                  {item.years}
+                </span>
+              </div>
+            ))
+          )}
         </div>
       </div>
       <AnimatePresence>
