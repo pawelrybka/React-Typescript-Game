@@ -15,4 +15,28 @@ https://coderoad.vercel.app/
   <li>React Testing Library</li>
 </ul>
 
+<h3>Run locally:</h3>
 
+Clone the project
+
+```bash
+  git clone https://github.com/pawelrybka/CodeRoad.git
+```
+
+Go to the project directory
+
+```bash
+  cd CodeRoad
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the development server
+
+```bash
+  npm run dev
+```
