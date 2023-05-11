@@ -20,13 +20,13 @@ https://coderoad.vercel.app/
 Clone the project
 
 ```bash
-  git clone https://github.com/pawelrybka/CodeRoad.git
+  git clone https://github.com/pawelrybka/coderoad.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd CodeRoad
+  cd coderoad
 ```
 
 Install dependencies
