@@ -1,6 +1,7 @@
 <h1>Coderoad</h1>
 How to become a good programmer? This simple CRUD application allows you to create a selected roadmap that will certainly help you set goals during your coder journey!
-<h2>Technologies used in this project:</h2>
+<a href="">https://coderoad.vercel.app/<h2>Click here to checkout app!</h2></a>
+<h3>Technologies used in this project:</h3>
 <ul>
   <li>React</li>
   <li>Typescript</li> 
@@ -12,3 +13,5 @@ How to become a good programmer? This simple CRUD application allows you to crea
   <li>Vitest</li>
   <li>React Testing Library</li>
 </ul>
+
+
