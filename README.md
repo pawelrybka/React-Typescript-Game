@@ -4,15 +4,15 @@ How to become a good programmer? This simple CRUD application allows you to crea
 https://coderoad.vercel.app/
 <h3>Technologies used in this project:</h3>
 <ul>
-  <li>React</li>
   <li>Typescript</li> 
   <li>Redux Toolkit</li>
-  <li>Framer Motion</li>
+  <li>React</li>
+  <li>React Testing Library</li>
   <li>React Icons</li>
   <li>React Toastify</li>
   <li>React Icons</li>
   <li>Vitest</li>
-  <li>React Testing Library</li>
+  <li>Framer Motion</li>
 </ul>
 
 <h3>Run locally:</h3>
